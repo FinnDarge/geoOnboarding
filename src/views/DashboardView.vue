@@ -39,7 +39,7 @@ const nextLesson = computed(() => {
       </div>
     </section>
 
-    <section class="grid grid--responsive">
+    <section class="dashboard__modules">
       <ModuleCard v-for="module in modules" :key="module.id" :module="module" :progress="moduleProgress(module.id)" />
     </section>
 
@@ -80,6 +80,13 @@ const nextLesson = computed(() => {
 
 .dashboard__progress {
   min-width: 240px;
+}
+
+.dashboard__modules {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: stretch;
 }
 
 .eyebrow {
