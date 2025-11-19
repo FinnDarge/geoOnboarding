@@ -1,0 +1,5 @@
+[
+  { "id": "proj", "text": "Explain EPSG:3857 vs EPSG:4326 to your mentor." },
+  { "id": "wms", "text": "Load at least one WMS layer in the playground." },
+  { "id": "wfs", "text": "Inspect a WFS feature's properties." }
+]

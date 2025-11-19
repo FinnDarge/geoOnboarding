@@ -1,0 +1,20 @@
+{
+  "title": "JavaScript Fundamentals Quiz",
+  "questions": [
+    {
+      "question": "Which keyword declares a block-scoped variable?",
+      "options": ["var", "let", "function", "const"],
+      "answer": 1
+    },
+    {
+      "question": "What does Array.prototype.map return?",
+      "options": ["A filtered array", "The same array mutated", "A new array", "An object"],
+      "answer": 2
+    },
+    {
+      "question": "Which statement is true about promises?",
+      "options": ["They block the thread", "They represent eventual completion", "They are synchronous", "They replace async/await"],
+      "answer": 1
+    }
+  ]
+}

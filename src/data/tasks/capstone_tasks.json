@@ -1,0 +1,5 @@
+[
+  { "id": "ideation", "text": "Define the problem your capstone app solves." },
+  { "id": "wireframe", "text": "Create a clickable wireframe in Figma." },
+  { "id": "prototype", "text": "Build a Vue + Masterportal prototype." }
+]

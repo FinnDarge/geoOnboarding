@@ -1,0 +1,16 @@
+{
+  "wms_basic": {
+    "type": "wms",
+    "title": "US States WMS",
+    "description": "Classic GeoServer sample layer rendered as WMS tiles.",
+    "url": "https://ahocevar.com/geoserver/wms",
+    "params": {
+      "LAYERS": "topp:states",
+      "TILED": true,
+      "FORMAT": "image/png",
+      "SRS": "EPSG:3857"
+    },
+    "center": [-98.5, 39.8],
+    "zoom": 4
+  }
+}
