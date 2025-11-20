@@ -12,6 +12,9 @@ const pageTitle = computed(() => {
   if (route.name === 'dashboard') {
     return 'Dashboard';
   }
+  if (route.name === 'team') {
+    return 'Team';
+  }
   if (route.name === 'module') {
     const module = modules.find((m) => m.id === route.params.id);
     return module ? module.title : 'Module';

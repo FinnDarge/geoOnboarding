@@ -134,6 +134,7 @@ const markCompleted = () => {
   border: 1px solid rgba(255, 255, 255, 0.2);
   display: grid;
   place-items: center;
+  flex-shrink: 0;
 }
 
 .lesson-status--done {

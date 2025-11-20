@@ -4,6 +4,7 @@ import { marked } from 'marked';
 import Quiz from './Quiz.vue';
 import TaskList from './TaskList.vue';
 import MapPlayground from './MapPlayground.vue';
+import CoordinateTransformer from './CoordinateTransformer.vue';
 
 const props = defineProps({
   lesson: {
@@ -35,6 +36,8 @@ const manualCompletionTypes = ['markdown', 'external-link', 'geo-playground'];
 
 const shouldShowCompleteButton = computed(() => manualCompletionTypes.includes(props.lesson.type));
 
+const shouldShowCoordinateTransformer = computed(() => props.lesson.id === 'projections-theory');
+
 const triggerCompletion = () => emit('complete');
 </script>
 
@@ -45,7 +48,10 @@ const triggerCompletion = () => emit('complete');
       <h2>{{ lesson.title }}</h2>
     </header>
 
-    <div v-if="lesson.type === 'markdown'" class="lesson__body" v-html="markdownHtml"></div>
+    <div v-if="lesson.type === 'markdown'" class="lesson__body">
+      <div v-html="markdownHtml"></div>
+      <CoordinateTransformer v-if="shouldShowCoordinateTransformer" />
+    </div>
 
     <div v-else-if="lesson.type === 'external-link'" class="lesson__body">
       <p class="muted">Review the external resource and take notes in your journal.</p>

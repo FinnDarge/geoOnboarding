@@ -11,13 +11,17 @@ const navItems = computed(() => [
     label: module.title,
     to: { name: 'module', params: { id: module.id } },
     icon: module.icon
-  }))
+  })),
+  { label: 'Team', to: { name: 'team' }, icon: '👥' }
 ]);
 
 const isActive = (to) => {
   if (!to) return false;
   if (to.name === 'dashboard') {
     return route.name === 'dashboard';
+  }
+  if (to.name === 'team') {
+    return route.name === 'team';
   }
   return route.params.id === to.params?.id;
 };

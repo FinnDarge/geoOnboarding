@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import DashboardView from '../views/DashboardView.vue';
 import ModuleView from '../views/ModuleView.vue';
+import TeamView from '../views/TeamView.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -15,6 +16,11 @@ const router = createRouter({
       name: 'module',
       component: ModuleView,
       props: true
+    },
+    {
+      path: '/team',
+      name: 'team',
+      component: TeamView
     }
   ]
 });
