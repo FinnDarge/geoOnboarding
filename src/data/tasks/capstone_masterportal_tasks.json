@@ -1,0 +1,5 @@
+[
+  { "id": "proposal", "text": "Share a one-pager describing the Masterportal feature you will extend." },
+  { "id": "prototype", "text": "Ship a clickable prototype with at least two configured layers and a custom control." },
+  { "id": "tests", "text": "Add tests for the control and one integration test that exercises a live WMS response stub." }
+]

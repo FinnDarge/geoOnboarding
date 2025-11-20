@@ -1,0 +1,5 @@
+[
+  { "id": "install", "text": "Set up Mocha/Chai/Sinon locally and run the existing Masterportal suite." },
+  { "id": "fixture", "text": "Add at least one fixture for a layer config and reference it from a new widget spec." },
+  { "id": "coverage", "text": "Document how your tests cover both store mutations and DOM rendering." }
+]

@@ -15,6 +15,19 @@ const trackSelectionEnabled = computed(() => moduleProgress('geo-basics') === 10
 const specializationTracks = computed(() => tracks.filter((track) => track.id !== 'common'));
 const availableModules = computed(() => getModulesForTrack(selectedTrack.value));
 
+const trackNarrative = {
+  masterportal: {
+    summary: 'Double down on the Masterportal stack: configuration-first mapping with Vue extensions.',
+    testing: 'Testing drills focus on Mocha/Chai/Sinon coverage for widgets, store mutations, and layer adapters.',
+    capstone: 'The capstone expects a bespoke control plus layered WMS/WFS content wired like production.'
+  },
+  polar: {
+    summary: 'Specialize in cryosphere data flows: polar projections, ice products, and remote sensing pipelines.',
+    testing: 'Testing drills emphasize reprojection helpers, polar WMTS/WMS requests, and time-enabled raster checks.',
+    capstone: 'The capstone asks for a polar viewer that blends ice layers with vessel or station context and time controls.'
+  }
+};
+
 const nextLesson = computed(() => {
   for (const module of availableModules.value) {
     for (const lesson of module.lessons) {
@@ -99,6 +112,17 @@ const selectTrack = (trackId) => {
             </div>
             <span v-if="selectedTrack === track.id" class="track-card__badge">Selected</span>
           </div>
+          <p class="muted track-card__copy">{{ trackNarrative[track.id]?.summary }}</p>
+          <ul class="track-card__bullets muted">
+            <li>
+              <strong>Testing:</strong>
+              {{ trackNarrative[track.id]?.testing }}
+            </li>
+            <li>
+              <strong>Capstone:</strong>
+              {{ trackNarrative[track.id]?.capstone }}
+            </li>
+          </ul>
           <p class="muted">{{ track.modules.length }} modules</p>
           <button
             class="track-card__button"
@@ -255,6 +279,18 @@ const selectTrack = (trackId) => {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+}
+
+.track-card__copy {
+  margin: 0;
+}
+
+.track-card__bullets {
+  margin: 0;
+  padding-left: 16px;
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
 }
 
 .track-card__badge {

@@ -1,0 +1,5 @@
+[
+  { "id": "harness", "text": "Clone the polar inputs repo and run the projection-aware test harness." },
+  { "id": "reprojection", "text": "Add a unit test that validates reprojection math for a sample EPSG:3413 tile request." },
+  { "id": "time-series", "text": "Write a spec that checks how a time slider updates query params for a time-enabled layer." }
+]

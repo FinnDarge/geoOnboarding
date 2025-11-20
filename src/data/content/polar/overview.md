@@ -1,11 +1,9 @@
-# Polar data overview
+# Polar data landscape
 
-This lesson summarizes the core datasets and projection considerations used in the polar track. Review how polar stereographic projections differ from common web mercator maps, and note which services expose near-real-time ice and snow products.
+Polar mapping work leans heavily on cryosphere programs that publish open data. Start by reviewing the repos and docs we use to stage layers:
 
-Key resources to explore:
+- The [PGC inputs repo](https://github.com/PolarGeospatialCenter/pgc-inputs) that catalogs Arctic and Antarctic vector/imagery sources
+- The [NSIDC data catalogs](https://nsidc.org/data) for passive microwave and snow products
+- Sea ice dashboards such as [Uni Bremen](https://seaice.uni-bremen.de/) for near-real-time ice concentration
 
-- ESA Climate Change Initiative for sea ice products
-- NSIDC data catalogs for passive microwave records
-- Sentinel-1 SAR open data for sea ice dynamics
-
-When you feel comfortable with the basic vocabulary and can explain the difference between Arctic and Antarctic projections, mark this lesson complete.
+Cross-check these resources against the projections and services you will consume later in the track. When you can describe which feeds are used for operational versus research views and which layers require reprojection, mark this lesson complete.

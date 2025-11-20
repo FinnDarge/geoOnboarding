@@ -1,0 +1,5 @@
+[
+  { "id": "brief", "text": "Draft the user story for your polar viewer and confirm which pole you will support." },
+  { "id": "layers", "text": "Configure at least one ice concentration layer and one station or vessel overlay using repo configs." },
+  { "id": "interaction", "text": "Implement a time or date control and validate that it refreshes the polar layer requests." }
+]
