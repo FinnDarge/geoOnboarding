@@ -1,13 +1,15 @@
 <script setup>
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import modules from '../data/modules.json';
+import { useStore } from 'vuex';
+import { getModulesForTrack } from '../data/moduleUtils';
 
 const route = useRoute();
+const store = useStore();
 
 const navItems = computed(() => [
   { label: 'Dashboard', to: { name: 'dashboard' }, icon: '📊' },
-  ...modules.map((module) => ({
+  ...getModulesForTrack(store.state.tracks.selected).map((module) => ({
     label: module.title,
     to: { name: 'module', params: { id: module.id } },
     icon: module.icon

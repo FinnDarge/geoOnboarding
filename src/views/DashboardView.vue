@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
-import modules from '../data/modules.json';
+import { getModulesForTrack, tracks } from '../data/moduleUtils';
 import ModuleCard from '../components/ModuleCard.vue';
 import ProgressBar from '../components/ProgressBar.vue';
 
@@ -10,8 +10,13 @@ const overallProgress = computed(() => store.getters['progress/overallProgress']
 
 const moduleProgress = (moduleId) => store.getters['progress/moduleProgress'](moduleId);
 
+const selectedTrack = computed(() => store.getters['tracks/selectedTrack']);
+const trackSelectionEnabled = computed(() => moduleProgress('geo-basics') === 100);
+const specializationTracks = computed(() => tracks.filter((track) => track.id !== 'common'));
+const availableModules = computed(() => getModulesForTrack(selectedTrack.value));
+
 const nextLesson = computed(() => {
-  for (const module of modules) {
+  for (const module of availableModules.value) {
     for (const lesson of module.lessons) {
       const completed = store.getters['progress/isLessonCompleted'](module.id, lesson.id);
       if (!completed) {
@@ -28,6 +33,7 @@ const resetProgress = () => {
   if (showResetConfirm.value) {
     store.commit('progress/resetProgress');
     store.commit('quiz/resetQuizResults');
+    store.commit('tracks/resetTrack');
     showResetConfirm.value = false;
   } else {
     showResetConfirm.value = true;
@@ -35,6 +41,11 @@ const resetProgress = () => {
       showResetConfirm.value = false;
     }, 3000);
   }
+};
+
+const selectTrack = (trackId) => {
+  if (!trackSelectionEnabled.value) return;
+  store.commit('tracks/selectTrack', trackId);
 };
 </script>
 
@@ -45,8 +56,8 @@ const resetProgress = () => {
         <p class="eyebrow">Hi, {{ store.getters['user/name'] || store.state.user.name }} 👋</p>
         <h1>Welcome to the Onboarding Academy</h1>
         <p class="muted">
-          Track your progress across JavaScript, Vue and geo development topics. Work through each module at your
-          own pace and mark lessons complete as you go.
+          Track your progress across JavaScript, Vue and geo development topics. Complete the core modules, pick a
+          specialization, and keep moving toward your capstone.
         </p>
       </div>
       <div class="dashboard__progress">
@@ -54,6 +65,49 @@ const resetProgress = () => {
         <button @click="resetProgress" class="reset-btn" :class="{ 'reset-btn--confirm': showResetConfirm }">
           {{ showResetConfirm ? 'Click again to confirm' : 'Reset Progress' }}
         </button>
+      </div>
+    </section>
+
+    <section class="card dashboard__tracks">
+      <div class="dashboard__tracks-header">
+        <div>
+          <p class="eyebrow">Choose your track</p>
+          <h3>Specialize after Geo Basics</h3>
+          <p class="muted">
+            Finish Geo Basics to unlock a track. Your dashboard and progress will adapt to the modules in the selected
+            specialization.
+          </p>
+        </div>
+        <div class="dashboard__track-status" :class="{ 'dashboard__track-status--ready': trackSelectionEnabled }">
+          {{ trackSelectionEnabled ? 'Track unlocked' : 'Complete Geo Basics to unlock' }}
+        </div>
+      </div>
+      <div class="dashboard__track-grid">
+        <div
+          v-for="track in specializationTracks"
+          :key="track.id"
+          class="track-card"
+          :class="{
+            'track-card--selected': selectedTrack === track.id,
+            'track-card--locked': !trackSelectionEnabled
+          }"
+        >
+          <div class="track-card__header">
+            <div>
+              <p class="eyebrow">{{ track.title }}</p>
+              <h4>{{ track.description }}</h4>
+            </div>
+            <span v-if="selectedTrack === track.id" class="track-card__badge">Selected</span>
+          </div>
+          <p class="muted">{{ track.modules.length }} modules</p>
+          <button
+            class="track-card__button"
+            :disabled="!trackSelectionEnabled || selectedTrack === track.id"
+            @click="selectTrack(track.id)"
+          >
+            {{ selectedTrack === track.id ? 'Current track' : trackSelectionEnabled ? 'Select this track' : 'Locked' }}
+          </button>
+        </div>
       </div>
     </section>
 
@@ -72,7 +126,12 @@ const resetProgress = () => {
     </section>
 
     <section class="dashboard__modules">
-      <ModuleCard v-for="module in modules" :key="module.id" :module="module" :progress="moduleProgress(module.id)" />
+      <ModuleCard
+        v-for="module in availableModules"
+        :key="module.id"
+        :module="module"
+        :progress="moduleProgress(module.id)"
+      />
     </section>
   </div>
 </template>
@@ -137,6 +196,95 @@ const resetProgress = () => {
   gap: 24px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   align-items: stretch;
+}
+
+.dashboard__tracks {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dashboard__tracks-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.dashboard__track-status {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.dashboard__track-status--ready {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.dashboard__track-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.track-card {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.track-card--selected {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent-soft);
+}
+
+.track-card--locked {
+  opacity: 0.6;
+}
+
+.track-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.track-card__badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.track-card__button {
+  align-self: flex-start;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.track-card__button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.track-card__button:not([disabled]):hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .eyebrow {

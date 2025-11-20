@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import modules from '../data/modules.json';
+import { getModuleById, getModulesForTrack } from '../data/moduleUtils';
 import LessonRenderer from '../components/LessonRenderer.vue';
 import ProgressBar from '../components/ProgressBar.vue';
 
@@ -10,7 +10,9 @@ const route = useRoute();
 const router = useRouter();
 const store = useStore();
 
-const moduleData = computed(() => modules.find((m) => m.id === route.params.id));
+const availableModules = computed(() => getModulesForTrack(store.state.tracks.selected));
+const moduleData = computed(() => availableModules.value.find((m) => m.id === route.params.id));
+const lockedModule = computed(() => !moduleData.value && getModuleById(route.params.id));
 
 const lessons = computed(() => moduleData.value?.lessons || []);
 
@@ -71,7 +73,8 @@ const markCompleted = () => {
     </section>
   </div>
   <div v-else class="card">
-    Module not found.
+    <p v-if="lockedModule">This module is part of another track. Switch tracks from the dashboard to access it.</p>
+    <p v-else>Module not found.</p>
   </div>
 </template>
 
