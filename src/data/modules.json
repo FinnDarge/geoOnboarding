@@ -1,152 +1,202 @@
-[
-  {
-    "id": "js-fundamentals",
-    "title": "JavaScript Fundamentals",
-    "description": "Learn the basics of modern JavaScript.",
-    "icon": "📜",
-    "lessons": [
-      {
-        "id": "intro",
-        "title": "What is JavaScript?",
-        "type": "markdown",
-        "content": "js_fundamentals/intro.md"
-      },
-      {
-        "id": "eloquent-js",
-        "title": "Eloquent JavaScript",
-        "type": "external-link",
-        "url": "https://eloquentjavascript.net/"
-      },
-      {
-        "id": "codecademy",
-        "title": "Codecademy JS Course",
-        "type": "external-link",
-        "url": "https://www.codecademy.com/learn/introduction-to-javascript"
-      },
-      {
-        "id": "quiz-1",
-        "title": "JS Fundamentals Quiz #1",
-        "type": "quiz",
-        "quizId": "js_fundamentals_1"
-      }
-    ]
-  },
-  {
-    "id": "vue-basics",
-    "title": "Vue + Vuex Basics",
-    "description": "Understand how we structure SPAs using Vue 3, Vue Router and Vuex.",
-    "icon": "🧩",
-    "lessons": [
-      {
-        "id": "vue-intro",
-        "title": "Vue 3 Essentials",
-        "type": "markdown",
-        "content": "vue_basics/intro.md"
-      },
-      {
-        "id": "vuex-guide",
-        "title": "Vuex Patterns",
-        "type": "markdown",
-        "content": "vue_basics/vuex.md"
-      },
-      {
-        "id": "router-docs",
-        "title": "Vue Router Guide",
-        "type": "external-link",
-        "url": "https://router.vuejs.org/guide/"
-      }
-    ]
-  },
-  {
-    "id": "geo-basics",
-    "title": "Geo Basics",
-    "description": "Projections, WMS, WFS and map concepts.",
-    "icon": "🗺️",
-    "lessons": [
-      {
-        "id": "projections-theory",
-        "title": "Coordinate Systems & Projections",
-        "type": "markdown",
-        "content": "geo_basics/projections.md"
-      },
-      {
-        "id": "wms-playground",
-        "title": "WMS Playground",
-        "type": "geo-playground",
-        "configId": "wms_basic"
-      },
-      {
-        "id": "wfs-playground",
-        "title": "WFS Playground",
-        "type": "geo-playground",
-        "configId": "wfs_basic"
-      },
-      {
-        "id": "geo-tasklist",
-        "title": "Geo Tasks",
-        "type": "task-list",
-        "tasksId": "geo_basics_tasks"
-      }
-    ]
-  },
-  {
-    "id": "masterportal",
-    "title": "Masterportal Overview",
-    "description": "Architecture, configuration and extension points.",
-    "icon": "🏛️",
-    "lessons": [
-      {
-        "id": "overview",
-        "title": "What is Masterportal?",
-        "type": "markdown",
-        "content": "masterportal/overview.md"
-      },
-      {
-        "id": "config",
-        "title": "Configuring Layers",
-        "type": "markdown",
-        "content": "masterportal/config.md"
-      }
-    ]
-  },
-  {
-    "id": "testing",
-    "title": "Testing with Mocha/Chai/Sinon",
-    "description": "Testing philosophy, tooling and best practices.",
-    "icon": "🧪",
-    "lessons": [
-      {
-        "id": "testing-stack",
-        "title": "Our Testing Stack",
-        "type": "markdown",
-        "content": "testing/stack.md"
-      },
-      {
-        "id": "mocha-resources",
-        "title": "Mocha Docs",
-        "type": "external-link",
-        "url": "https://mochajs.org/"
-      }
-    ]
-  },
-  {
-    "id": "capstone",
-    "title": "Capstone Project",
-    "description": "Combine everything into a small geo-enabled app.",
-    "icon": "🚀",
-    "lessons": [
-      {
-        "id": "brief",
-        "title": "Project Brief",
-        "type": "markdown",
-        "content": "capstone/brief.md"
-      },
-      {
-        "id": "task-checklist",
-        "title": "Build Checklist",
-        "type": "task-list",
-        "tasksId": "capstone_tasks"
-      }
-    ]
-  }
-]
+{
+  "tracks": [
+    {
+      "id": "common",
+      "title": "Common Core",
+      "description": "Shared fundamentals before choosing a specialization track.",
+      "modules": [
+        {
+          "id": "js-fundamentals",
+          "title": "JavaScript Fundamentals",
+          "description": "Learn the basics of modern JavaScript.",
+          "icon": "📜",
+          "track": "common",
+          "lessons": [
+            {
+              "id": "intro",
+              "title": "What is JavaScript?",
+              "type": "markdown",
+              "content": "js_fundamentals/intro.md"
+            },
+            {
+              "id": "eloquent-js",
+              "title": "Eloquent JavaScript",
+              "type": "external-link",
+              "url": "https://eloquentjavascript.net/"
+            },
+            {
+              "id": "codecademy",
+              "title": "Codecademy JS Course",
+              "type": "external-link",
+              "url": "https://www.codecademy.com/learn/introduction-to-javascript"
+            },
+            {
+              "id": "quiz-1",
+              "title": "JS Fundamentals Quiz #1",
+              "type": "quiz",
+              "quizId": "js_fundamentals_1"
+            }
+          ]
+        },
+        {
+          "id": "vue-basics",
+          "title": "Vue + Vuex Basics",
+          "description": "Understand how we structure SPAs using Vue 3, Vue Router and Vuex.",
+          "icon": "🧩",
+          "track": "common",
+          "lessons": [
+            {
+              "id": "vue-intro",
+              "title": "Vue 3 Essentials",
+              "type": "markdown",
+              "content": "vue_basics/intro.md"
+            },
+            {
+              "id": "vuex-guide",
+              "title": "Vuex Patterns",
+              "type": "markdown",
+              "content": "vue_basics/vuex.md"
+            },
+            {
+              "id": "router-docs",
+              "title": "Vue Router Guide",
+              "type": "external-link",
+              "url": "https://router.vuejs.org/guide/"
+            }
+          ]
+        },
+        {
+          "id": "geo-basics",
+          "title": "Geo Basics",
+          "description": "Projections, WMS, WFS and map concepts.",
+          "icon": "🗺️",
+          "track": "common",
+          "lessons": [
+            {
+              "id": "projections-theory",
+              "title": "Coordinate Systems & Projections",
+              "type": "markdown",
+              "content": "geo_basics/projections.md"
+            },
+            {
+              "id": "wms-playground",
+              "title": "WMS Playground",
+              "type": "geo-playground",
+              "configId": "wms_basic"
+            },
+            {
+              "id": "wfs-playground",
+              "title": "WFS Playground",
+              "type": "geo-playground",
+              "configId": "wfs_basic"
+            },
+            {
+              "id": "geo-tasklist",
+              "title": "Geo Tasks",
+              "type": "task-list",
+              "tasksId": "geo_basics_tasks"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "masterportal",
+      "title": "Masterportal Track",
+      "description": "Specialize in the Masterportal stack and its extension points.",
+      "modules": [
+        {
+          "id": "masterportal",
+          "title": "Masterportal Overview",
+          "description": "Architecture, configuration and extension points.",
+          "icon": "🏛️",
+          "track": "masterportal",
+          "lessons": [
+            {
+              "id": "overview",
+              "title": "What is Masterportal?",
+              "type": "markdown",
+              "content": "masterportal/overview.md"
+            },
+            {
+              "id": "config",
+              "title": "Configuring Layers",
+              "type": "markdown",
+              "content": "masterportal/config.md"
+            }
+          ]
+        },
+        {
+          "id": "testing",
+          "title": "Testing with Mocha/Chai/Sinon",
+          "description": "Testing philosophy, tooling and best practices.",
+          "icon": "🧪",
+          "track": "masterportal",
+          "lessons": [
+            {
+              "id": "testing-stack",
+              "title": "Our Testing Stack",
+              "type": "markdown",
+              "content": "testing/stack.md"
+            },
+            {
+              "id": "mocha-resources",
+              "title": "Mocha Docs",
+              "type": "external-link",
+              "url": "https://mochajs.org/"
+            }
+          ]
+        },
+        {
+          "id": "capstone",
+          "title": "Capstone Project",
+          "description": "Combine everything into a small geo-enabled app.",
+          "icon": "🚀",
+          "track": "masterportal",
+          "lessons": [
+            {
+              "id": "brief",
+              "title": "Project Brief",
+              "type": "markdown",
+              "content": "capstone/brief.md"
+            },
+            {
+              "id": "task-checklist",
+              "title": "Build Checklist",
+              "type": "task-list",
+              "tasksId": "capstone_tasks"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "polar",
+      "title": "Polar Track",
+      "description": "Focus on polar data, ice observations and remote sensing flows.",
+      "modules": [
+        {
+          "id": "polar-mapping",
+          "title": "Polar Mapping Essentials",
+          "description": "Work with cryosphere data and polar map projections.",
+          "icon": "❄️",
+          "track": "polar",
+          "lessons": [
+            {
+              "id": "polar-overview",
+              "title": "Polar Data Overview",
+              "type": "markdown",
+              "content": "polar/overview.md"
+            },
+            {
+              "id": "sea-ice",
+              "title": "Sea Ice Observations",
+              "type": "external-link",
+              "url": "https://seaice.uni-bremen.de/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
