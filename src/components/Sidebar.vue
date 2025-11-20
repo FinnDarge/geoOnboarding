@@ -6,7 +6,7 @@ import modules from '../data/modules.json';
 const route = useRoute();
 
 const navItems = computed(() => [
-  { label: 'Dashboard', to: { name: 'dashboard' } },
+  { label: 'Dashboard', to: { name: 'dashboard' }, icon: '📊' },
   ...modules.map((module) => ({
     label: module.title,
     to: { name: 'module', params: { id: module.id } },
@@ -72,6 +72,7 @@ const isActive = (to) => {
   display: grid;
   place-items: center;
   font-size: 24px;
+  flex-shrink: 0;
 }
 
 .sidebar__title {
@@ -80,11 +81,15 @@ const isActive = (to) => {
   text-transform: uppercase;
   font-size: 12px;
   color: var(--color-text-muted);
+  margin: 0 0 2px 0;
+  line-height: 1.2;
 }
 
 .sidebar__subtitle {
   font-size: 18px;
   font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .sidebar__nav {

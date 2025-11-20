@@ -1,5 +1,3 @@
-## Vuex Patterns we rely on
-
 - Keep modules namespaced for clarity.
 - Mirror server concepts: `user`, `auth`, `progress`, `map`.
 - Use getters for derived progress bars.

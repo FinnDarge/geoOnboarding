@@ -19,7 +19,8 @@ const props = defineProps({
 const emit = defineEmits(['complete']);
 
 const markdownFiles = import.meta.glob('../data/content/**/*.md', {
-  as: 'raw',
+  query: '?raw',
+  import: 'default',
   eager: true
 });
 
@@ -42,7 +43,6 @@ const triggerCompletion = () => emit('complete');
     <header class="lesson__header">
       <p class="eyebrow">Lesson</p>
       <h2>{{ lesson.title }}</h2>
-      <p class="lesson__type">Type: {{ lesson.type }}</p>
     </header>
 
     <div v-if="lesson.type === 'markdown'" class="lesson__body" v-html="markdownHtml"></div>

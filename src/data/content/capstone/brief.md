@@ -1,5 +1,3 @@
-## Capstone brief
-
 Design a simple municipal dashboard:
 
 - Show KPIs (energy usage, bike stations, etc.)

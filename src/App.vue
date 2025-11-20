@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import AppLayout from './layouts/AppLayout.vue';
+import modules from './data/modules.json';
 
 const route = useRoute();
 const store = useStore();
@@ -12,7 +13,8 @@ const pageTitle = computed(() => {
     return 'Dashboard';
   }
   if (route.name === 'module') {
-    return 'Module: ' + (route.params.id || '');
+    const module = modules.find((m) => m.id === route.params.id);
+    return module ? module.title : 'Module';
   }
   return 'Onboarding Academy';
 });

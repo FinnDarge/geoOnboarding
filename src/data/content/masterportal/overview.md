@@ -1,5 +1,3 @@
-## Masterportal overview
-
 Masterportal wraps OpenLayers with configuration-driven widgets. Learn the high-level blocks:
 
 - **PortalConfig** files define layers, tools and UI modules.

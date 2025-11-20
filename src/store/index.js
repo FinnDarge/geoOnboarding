@@ -39,6 +39,9 @@ const progress = {
       if (!state.completedLessons.includes(key)) {
         state.completedLessons.push(key);
       }
+    },
+    resetProgress(state) {
+      state.completedLessons = [];
     }
   },
   getters: {
@@ -71,6 +74,9 @@ const quiz = {
   mutations: {
     saveResult(state, { quizId, score, total }) {
       state.results[quizId] = { score, total };
+    },
+    resetQuizResults(state) {
+      state.results = {};
     }
   }
 };

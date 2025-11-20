@@ -58,7 +58,7 @@ const markCompleted = () => {
             <p class="lesson-type">{{ lesson.type }}</p>
           </div>
           <span class="lesson-status" :class="{ 'lesson-status--done': isLessonCompleted(lesson.id) }">
-            {{ isLessonCompleted(lesson.id) ? '✓' : '○' }}
+            {{ isLessonCompleted(lesson.id) ? '✓' : '' }}
           </span>
         </li>
       </ul>

@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 import modules from '../data/modules.json';
 import ModuleCard from '../components/ModuleCard.vue';
@@ -21,6 +21,21 @@ const nextLesson = computed(() => {
   }
   return null;
 });
+
+const showResetConfirm = ref(false);
+
+const resetProgress = () => {
+  if (showResetConfirm.value) {
+    store.commit('progress/resetProgress');
+    store.commit('quiz/resetQuizResults');
+    showResetConfirm.value = false;
+  } else {
+    showResetConfirm.value = true;
+    setTimeout(() => {
+      showResetConfirm.value = false;
+    }, 3000);
+  }
+};
 </script>
 
 <template>
@@ -36,17 +51,16 @@ const nextLesson = computed(() => {
       </div>
       <div class="dashboard__progress">
         <ProgressBar label="Overall Progress" :value="overallProgress" />
+        <button @click="resetProgress" class="reset-btn" :class="{ 'reset-btn--confirm': showResetConfirm }">
+          {{ showResetConfirm ? 'Click again to confirm' : 'Reset Progress' }}
+        </button>
       </div>
-    </section>
-
-    <section class="dashboard__modules">
-      <ModuleCard v-for="module in modules" :key="module.id" :module="module" :progress="moduleProgress(module.id)" />
     </section>
 
     <section class="card dashboard__next" v-if="nextLesson">
       <div>
         <p class="eyebrow">Next recommended lesson</p>
-        <h2>{{ nextLesson.module.title }}</h2>
+        <h3>{{ nextLesson.module.title }}</h3>
         <p class="muted">{{ nextLesson.lesson.title }}</p>
       </div>
       <RouterLink
@@ -55,6 +69,10 @@ const nextLesson = computed(() => {
       >
         Continue →
       </RouterLink>
+    </section>
+
+    <section class="dashboard__modules">
+      <ModuleCard v-for="module in modules" :key="module.id" :module="module" :progress="moduleProgress(module.id)" />
     </section>
   </div>
 </template>
@@ -80,6 +98,38 @@ const nextLesson = computed(() => {
 
 .dashboard__progress {
   min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reset-btn {
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-text);
+}
+
+.reset-btn--confirm {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+.reset-btn--confirm:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.6);
 }
 
 .dashboard__modules {
@@ -106,15 +156,27 @@ const nextLesson = computed(() => {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  padding: 16px 20px;
+}
+
+.dashboard__next h3 {
+  margin: 4px 0;
+  font-size: 18px;
+}
+
+.dashboard__next .muted {
+  font-size: 14px;
 }
 
 .next-btn {
-  padding: 12px 18px;
+  padding: 10px 16px;
   border-radius: 999px;
   background: var(--color-accent);
   color: #0f172a;
   text-decoration: none;
   font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
   transition: transform 0.2s ease;
 }
 

@@ -1,5 +1,3 @@
-## Configuring layers
-
 Each layer entry defines: service URL, layer id, style and metadata. When onboarding:
 
 1. Duplicate a sandbox config

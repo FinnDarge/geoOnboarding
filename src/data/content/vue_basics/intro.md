@@ -1,5 +1,3 @@
-## Vue 3 essentials
-
 Vue embraces a declarative and reactive mindset. Make sure you are comfortable with:
 
 1. `script setup` single file components

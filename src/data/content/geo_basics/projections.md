@@ -1,5 +1,3 @@
-## Coordinate systems & projections
-
 OpenLayers defaults to EPSG:3857 but many of our datasets live in EPSG:25832. When working on Masterportal, always:
 
 - Confirm the dataset CRS and reproject when necessary

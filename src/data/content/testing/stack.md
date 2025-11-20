@@ -1,5 +1,3 @@
-## Testing stack
-
 Our recommended flow:
 
 - Mocha orchestrates suites and hooks
