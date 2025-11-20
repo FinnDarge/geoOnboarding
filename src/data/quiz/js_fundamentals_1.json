@@ -2,19 +2,104 @@
   "title": "JavaScript Fundamentals Quiz",
   "questions": [
     {
-      "question": "Which keyword declares a block-scoped variable?",
-      "options": ["var", "let", "function", "const"],
-      "answer": 1
-    },
-    {
-      "question": "What does Array.prototype.map return?",
-      "options": ["A filtered array", "The same array mutated", "A new array", "An object"],
+      "question": "Which keywords create block scope?",
+      "options": ["Only var", "Only let", "let and const", "function"],
       "answer": 2
     },
     {
-      "question": "Which statement is true about promises?",
-      "options": ["They block the thread", "They represent eventual completion", "They are synchronous", "They replace async/await"],
+      "question": "What is const primarily used for?",
+      "options": ["Constant reference", "Immutable string", "Numbers only", "Functions only"],
+      "answer": 0
+    },
+    {
+      "question": "What does typeof null return?",
+      "options": ["\"object\"", "\"null\"", "\"undefined\"", "\"number\""],
+      "answer": 0
+    },
+    {
+      "question": "What is the difference between == and ===?",
+      "options": ["No difference", "== compares with type coercion", "=== forces type coercion", "Both force type coercion"],
       "answer": 1
+    },
+    {
+      "question": "How do you create a template string?",
+      "options": ["Single quotes", "Double quotes", "Backticks", "Slash brackets"],
+      "answer": 2
+    },
+    {
+      "question": "What does Array.prototype.map do?",
+      "options": ["Filters elements", "Mutates the original array", "Returns a new array", "Removes duplicates"],
+      "answer": 2
+    },
+    {
+      "question": "What does Array.prototype.filter do?",
+      "options": ["Transforms elements", "Selects elements based on a condition", "Reduces to a single value", "Sorts the array"],
+      "answer": 1
+    },
+    {
+      "question": "What does Array.prototype.reduce typically return?",
+      "options": ["A single result", "A new array", "A sorted array", "An object with length info"],
+      "answer": 0
+    },
+    {
+      "question": "How do you make a shallow copy of an array?",
+      "options": ["const copy = arr;", "const copy = [...arr];", "const copy = arr.map();", "const copy = arr.copy();"],
+      "answer": 1
+    },
+    {
+      "question": "What happens with const { name } = user;?",
+      "options": ["Object is converted to string", "Property name is extracted", "All properties are deleted", "A method is called"],
+      "answer": 1
+    },
+    {
+      "question": "What does the rest parameter syntax (...args) do?",
+      "options": ["Creates an object", "Converts to numbers", "Bundles remaining arguments into an array", "Removes arguments"],
+      "answer": 2
+    },
+    {
+      "question": "What does the spread syntax ... do in arrays?",
+      "options": ["Creates a promise", "Inserts array elements individually", "Starts a loop", "Checks types"],
+      "answer": 1
+    },
+    {
+      "question": "What is an arrow function?",
+      "options": ["A function without a return value", "Concise syntax for functions", "Special class function", "Browser-only function"],
+      "answer": 1
+    },
+    {
+      "question": "When is a variable undefined?",
+      "options": ["When not declared", "When declared without a value", "After delete", "On calculation error"],
+      "answer": 1
+    },
+    {
+      "question": "What does truthy mean?",
+      "options": ["Only true", "Any value except false, 0, \"\", null, undefined, NaN", "All numbers", "Only strings"],
+      "answer": 1
+    },
+    {
+      "question": "How do you set a default parameter?",
+      "options": ["function f(a = 1)", "function f(a := 1)", "function f(default a)", "function f(a ? 1)"],
+      "answer": 0
+    },
+    {
+      "question": "What does Number(\"5\") + 1 return?",
+      "options": ["\"51\"", "6", "NaN", "51"],
+      "answer": 1
+    },
+    {
+      "question": "What happens with setTimeout(() => console.log(\"A\"), 0); console.log(\"B\");?",
+      "options": ["A before B", "B before A", "A and B together", "No output"],
+      "answer": 1
+    },
+    {
+      "question": "How do you check if an array contains an element?",
+      "options": ["arr.has(value)", "arr.includes(value)", "arr.contains(value)", "arr.findIndex(value)"],
+      "answer": 1
+    },
+    {
+      "question": "How do you convert a string to a number without Number?",
+      "options": ["+\"42\"", "\"42\".toArray()", "parseArray(\"42\")", "String(42)"],
+      "answer": 0
     }
   ]
 }
