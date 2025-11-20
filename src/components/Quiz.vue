@@ -31,6 +31,12 @@ const quiz = computed(() => {
 const selections = reactive({});
 const submitted = ref(false);
 const score = ref(0);
+const results = reactive({});
+
+const canSubmit = computed(() => {
+  const questions = quiz.value.questions || [];
+  return questions.every((_, index) => selections[index] !== undefined);
+});
 
 const submit = () => {
   const questions = quiz.value.questions || [];
@@ -41,7 +47,9 @@ const submit = () => {
   }
   let correct = 0;
   questions.forEach((question, index) => {
-    if (selections[index] === question.answer) {
+    const isCorrect = selections[index] === question.answer;
+    results[index] = isCorrect;
+    if (isCorrect) {
       correct += 1;
     }
   });
@@ -60,24 +68,69 @@ const submit = () => {
     emit('passed');
   }
 };
+
+const retryFailedQuestions = () => {
+  const questions = quiz.value.questions || [];
+  questions.forEach((question, index) => {
+    if (results[index] === false) {
+      delete selections[index];
+      delete results[index];
+    }
+  });
+  submitted.value = false;
+  score.value = 0;
+};
 </script>
 
 <template>
   <div class="quiz">
     <h3>{{ quiz.title }}</h3>
     <form class="quiz__list" @submit.prevent="submit">
-      <div v-for="(question, index) in quiz.questions" :key="index" class="quiz__question">
-        <p>{{ index + 1 }}. {{ question.question }}</p>
-        <label v-for="(option, optionIndex) in question.options" :key="optionIndex" class="quiz__option">
-          <input type="radio" :name="`q-${index}`" :value="optionIndex" v-model="selections[index]" />
+      <div 
+        v-for="(question, index) in quiz.questions" 
+        :key="index" 
+        class="quiz__question"
+        :class="{
+          'quiz__question--correct': results[index] === true,
+          'quiz__question--incorrect': submitted && results[index] === false
+        }"
+      >
+        <p class="quiz__question-text">
+          {{ index + 1 }}. {{ question.question }}
+          <span v-if="results[index] === true" class="quiz__indicator quiz__indicator--correct">✓</span>
+          <span v-if="submitted && results[index] === false" class="quiz__indicator quiz__indicator--incorrect">✗</span>
+        </p>
+        <label 
+          v-for="(option, optionIndex) in question.options" 
+          :key="optionIndex" 
+          class="quiz__option"
+          :class="{
+            'quiz__option--selected': selections[index] === optionIndex,
+            'quiz__option--correct': results[index] === true && optionIndex === question.answer,
+            'quiz__option--incorrect': submitted && selections[index] === optionIndex && optionIndex !== question.answer
+          }"
+        >
+          <input 
+            type="radio" 
+            :name="`q-${index}`" 
+            :value="optionIndex" 
+            v-model="selections[index]"
+            :disabled="submitted || results[index] === true"
+          />
           <span>{{ option }}</span>
         </label>
       </div>
-      <button class="primary-btn" type="submit">Submit quiz</button>
+      <button class="primary-btn" type="submit" :disabled="submitted || !canSubmit">
+        {{ submitted ? 'Quiz completed' : 'Submit quiz' }}
+      </button>
+      <p v-if="!canSubmit && !submitted" class="quiz__warning">Please answer all questions before submitting.</p>
     </form>
-    <p v-if="submitted" class="quiz__result">Score: {{ score }}%</p>
-    <p v-if="submitted && score >= 70" class="quiz__result quiz__result--success">Great job! Lesson marked as complete.</p>
-    <p v-else-if="submitted" class="quiz__result quiz__result--warning">Aim for at least 70% to pass.</p>
+    <div v-if="submitted" class="quiz__results">
+      <p class="quiz__result">Score: {{ score }}%</p>
+      <p v-if="score >= 70" class="quiz__result quiz__result--success">Great job! Lesson marked as complete.</p>
+      <p v-else class="quiz__result quiz__result--warning">You need at least 70% to pass. Try again on the failed questions!</p>
+      <button v-if="score < 70" @click="retryFailedQuestions" class="ghost-btn">Retry failed questions</button>
+    </div>
   </div>
 </template>
 
@@ -92,13 +145,73 @@ const submit = () => {
   padding: 16px;
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.03);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.quiz__question--correct {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.quiz__question--incorrect {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.quiz__question-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.quiz__indicator {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.quiz__indicator--correct {
+  color: #22c55e;
+}
+
+.quiz__indicator--incorrect {
+  color: #ef4444;
 }
 
 .quiz__option {
   display: flex;
   gap: 8px;
   align-items: center;
-  padding: 6px 0;
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.quiz__option:hover:not(.quiz__option--correct):not(.quiz__option--incorrect) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.quiz__option--correct {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.quiz__option--incorrect {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.quiz__option input:disabled {
+  cursor: not-allowed;
+}
+
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .quiz__result {
@@ -111,5 +224,25 @@ const submit = () => {
 
 .quiz__result--warning {
   color: #fbbf24;
+}
+
+.quiz__warning {
+  color: #fbbf24;
+  font-size: 14px;
+  margin-top: -6px;
+}
+
+.quiz__results {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ghost-btn {
+  align-self: flex-start;
 }
 </style>
