@@ -1,7 +1,10 @@
 import { createStore } from 'vuex';
 import modulesData from '../data/modules.json';
+import { modulesForTrack, trackOptions } from '../data/tracks';
 
 const STORAGE_KEY = 'onboarding-academy-state';
+
+const DEFAULT_TRACK = trackOptions[0].id;
 
 const persisted = (() => {
   if (typeof window === 'undefined') return {};
@@ -16,15 +19,20 @@ const persisted = (() => {
 const user = {
   namespaced: true,
   state: () => ({
-    name: persisted.user?.name || 'Nachwuchskraft'
+    name: persisted.user?.name || 'Nachwuchskraft',
+    track: persisted.user?.track || DEFAULT_TRACK
   }),
   mutations: {
     setName(state, name) {
       state.name = name;
+    },
+    setTrack(state, track) {
+      state.track = track;
     }
   },
   getters: {
-    name: (state) => state.name
+    name: (state) => state.name,
+    track: (state) => state.track
   }
 };
 
@@ -47,9 +55,9 @@ const progress = {
   getters: {
     isLessonCompleted: (state) => (moduleId, lessonId) =>
       state.completedLessons.includes(`${moduleId}:${lessonId}`),
-    moduleProgress: (state) => (moduleId) => {
+    moduleProgress: (state, getters, rootState) => (moduleId) => {
       const module = modulesData.find((m) => m.id === moduleId);
-      if (!module) return 0;
+      if (!module || (module.tracks && !module.tracks.includes(rootState.user.track))) return 0;
       const total = module.lessons.length;
       if (!total) return 0;
       const completed = module.lessons.filter((lesson) =>
@@ -57,10 +65,14 @@ const progress = {
       ).length;
       return Math.round((completed / total) * 100);
     },
-    overallProgress: (state) => {
-      const totalLessons = modulesData.reduce((sum, module) => sum + module.lessons.length, 0);
+    overallProgress: (state, getters, rootState) => {
+      const trackModules = modulesForTrack(rootState.user.track);
+      const totalLessons = trackModules.reduce((sum, module) => sum + module.lessons.length, 0);
       if (!totalLessons) return 0;
-      const completed = state.completedLessons.length;
+      const trackLessonKeys = trackModules.flatMap((module) =>
+        module.lessons.map((lesson) => `${module.id}:${lesson.id}`)
+      );
+      const completed = state.completedLessons.filter((key) => trackLessonKeys.includes(key)).length;
       return Math.round((completed / totalLessons) * 100);
     }
   }

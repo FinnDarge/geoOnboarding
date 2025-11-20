@@ -1,0 +1,5 @@
+[
+  { "id": "inventory", "text": "List the Polar data sources you plan to load and their owners." },
+  { "id": "style", "text": "Define styles for vector data (colors, stroke widths, labels)." },
+  { "id": "controls", "text": "Add at least one map control (search, toggle, or filter) wired to your config." }
+]

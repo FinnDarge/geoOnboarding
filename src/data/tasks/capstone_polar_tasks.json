@@ -1,0 +1,5 @@
+[
+  { "id": "audience", "text": "Describe the audience and user journey for your Polar demo." },
+  { "id": "sources", "text": "Load one vector and one tiled source following the repo docs." },
+  { "id": "validation", "text": "List the manual or automated checks you ran against the Polar build." }
+]

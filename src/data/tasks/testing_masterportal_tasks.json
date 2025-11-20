@@ -1,0 +1,5 @@
+[
+  { "id": "fixtures", "text": "Create fixtures for the Masterportal layers or stores you touch." },
+  { "id": "ol-mocks", "text": "Mock OpenLayers interactions (click/zoom) in one integration test." },
+  { "id": "config-regressions", "text": "Add an assertion that fails when an invalid layer config is parsed." }
+]

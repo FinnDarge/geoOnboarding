@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import modules from '../data/modules.json';
+import { modulesForTrack } from '../data/tracks';
 import LessonRenderer from '../components/LessonRenderer.vue';
 import ProgressBar from '../components/ProgressBar.vue';
 
@@ -10,7 +10,10 @@ const route = useRoute();
 const router = useRouter();
 const store = useStore();
 
-const moduleData = computed(() => modules.find((m) => m.id === route.params.id));
+const activeTrack = computed(() => store.getters['user/track']);
+const availableModules = computed(() => modulesForTrack(activeTrack.value));
+
+const moduleData = computed(() => availableModules.value.find((m) => m.id === route.params.id));
 
 const lessons = computed(() => moduleData.value?.lessons || []);
 
@@ -71,7 +74,7 @@ const markCompleted = () => {
     </section>
   </div>
   <div v-else class="card">
-    Module not found.
+    <p>Module not available for the current track. Switch tracks on the dashboard to view it.</p>
   </div>
 </template>
 

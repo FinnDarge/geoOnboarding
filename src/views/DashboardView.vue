@@ -1,17 +1,20 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
-import modules from '../data/modules.json';
+import { modulesForTrack, trackOptions } from '../data/tracks';
 import ModuleCard from '../components/ModuleCard.vue';
 import ProgressBar from '../components/ProgressBar.vue';
 
 const store = useStore();
 const overallProgress = computed(() => store.getters['progress/overallProgress']);
+const activeTrack = computed(() => store.getters['user/track']);
 
 const moduleProgress = (moduleId) => store.getters['progress/moduleProgress'](moduleId);
 
+const filteredModules = computed(() => modulesForTrack(activeTrack.value));
+
 const nextLesson = computed(() => {
-  for (const module of modules) {
+  for (const module of filteredModules.value) {
     for (const lesson of module.lessons) {
       const completed = store.getters['progress/isLessonCompleted'](module.id, lesson.id);
       if (!completed) {
@@ -23,6 +26,10 @@ const nextLesson = computed(() => {
 });
 
 const showResetConfirm = ref(false);
+
+const selectTrack = (trackId) => {
+  store.commit('user/setTrack', trackId);
+};
 
 const resetProgress = () => {
   if (showResetConfirm.value) {
@@ -40,6 +47,30 @@ const resetProgress = () => {
 
 <template>
   <div class="dashboard">
+    <section class="card dashboard__track">
+      <div>
+        <p class="eyebrow">Choose your path</p>
+        <h2>Pick the track that matches your deployment</h2>
+        <p class="muted">
+          Masterportal focuses on civic deployments and configuration-heavy workflows. Polar focuses on a lightweight client
+          you configure directly from the repository. The testing and capstone modules below adapt to whichever track you
+          choose.
+        </p>
+      </div>
+      <div class="track-options">
+        <label v-for="track in trackOptions" :key="track.id" class="track-option card" :class="{ 'track-option--active': track.id === activeTrack }">
+          <div class="track-option__header">
+            <input type="radio" :value="track.id" :checked="track.id === activeTrack" @change="selectTrack(track.id)" />
+            <div>
+              <p class="eyebrow">{{ track.name }}</p>
+              <h3>{{ track.summary }}</h3>
+            </div>
+          </div>
+          <p class="muted">{{ track.expectations }}</p>
+        </label>
+      </div>
+    </section>
+
     <section class="card dashboard__hero">
       <div>
         <p class="eyebrow">Hi, {{ store.getters['user/name'] || store.state.user.name }} 👋</p>
@@ -72,7 +103,12 @@ const resetProgress = () => {
     </section>
 
     <section class="dashboard__modules">
-      <ModuleCard v-for="module in modules" :key="module.id" :module="module" :progress="moduleProgress(module.id)" />
+      <ModuleCard
+        v-for="module in filteredModules"
+        :key="module.id"
+        :module="module"
+        :progress="moduleProgress(module.id)"
+      />
     </section>
   </div>
 </template>
@@ -82,6 +118,47 @@ const resetProgress = () => {
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+
+.dashboard__track {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.track-options {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.track-option {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.track-option--active {
+  border-color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.track-option__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.track-option h3 {
+  margin: 2px 0 4px;
+  font-size: 16px;
+}
+
+.track-option input {
+  margin-top: 6px;
 }
 
 .dashboard__hero {

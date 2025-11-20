@@ -3,10 +3,12 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import AppLayout from './layouts/AppLayout.vue';
-import modules from './data/modules.json';
+import { modulesForTrack } from './data/tracks';
 
 const route = useRoute();
 const store = useStore();
+
+const activeTrack = computed(() => store.getters['user/track']);
 
 const pageTitle = computed(() => {
   if (route.name === 'dashboard') {
@@ -16,7 +18,7 @@ const pageTitle = computed(() => {
     return 'Team';
   }
   if (route.name === 'module') {
-    const module = modules.find((m) => m.id === route.params.id);
+    const module = modulesForTrack(activeTrack.value).find((m) => m.id === route.params.id);
     return module ? module.title : 'Module';
   }
   return 'Onboarding Academy';

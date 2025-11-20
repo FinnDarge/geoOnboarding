@@ -1,0 +1,5 @@
+[
+  { "id": "problem", "text": "Document the civic scenario your Masterportal app solves." },
+  { "id": "layers", "text": "Wire two layers with clear metadata and toggle controls." },
+  { "id": "tests", "text": "Ship a Mocha/Chai suite for your most critical store or widget." }
+]

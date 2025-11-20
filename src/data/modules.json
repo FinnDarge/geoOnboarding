@@ -4,6 +4,7 @@
     "title": "JavaScript Fundamentals",
     "description": "Learn the basics of modern JavaScript.",
     "icon": "📜",
+    "tracks": ["masterportal", "polar"],
     "lessons": [
       {
         "id": "intro",
@@ -36,6 +37,7 @@
     "title": "Vue + Vuex Basics",
     "description": "Understand how we structure SPAs using Vue 3, Vue Router and Vuex.",
     "icon": "🧩",
+    "tracks": ["masterportal", "polar"],
     "lessons": [
       {
         "id": "vue-intro",
@@ -62,6 +64,7 @@
     "title": "Geo Basics",
     "description": "Projections, WMS, WFS and map concepts.",
     "icon": "🗺️",
+    "tracks": ["masterportal", "polar"],
     "lessons": [
       {
         "id": "projections-theory",
@@ -94,6 +97,7 @@
     "title": "Masterportal Overview",
     "description": "Architecture, configuration and extension points.",
     "icon": "🏛️",
+    "tracks": ["masterportal"],
     "lessons": [
       {
         "id": "overview",
@@ -110,42 +114,146 @@
     ]
   },
   {
-    "id": "testing",
-    "title": "Testing with Mocha/Chai/Sinon",
-    "description": "Testing philosophy, tooling and best practices.",
-    "icon": "🧪",
+    "id": "polar-overview",
+    "title": "Polar Overview",
+    "description": "Understand the Polar map client and how it consumes data.",
+    "icon": "❄️",
+    "tracks": ["polar"],
     "lessons": [
       {
-        "id": "testing-stack",
-        "title": "Our Testing Stack",
+        "id": "polar-intro",
+        "title": "How Polar is structured",
         "type": "markdown",
-        "content": "testing/stack.md"
+        "content": "polar/overview.md"
       },
       {
-        "id": "mocha-resources",
-        "title": "Mocha Docs",
+        "id": "polar-repo",
+        "title": "Polar repository walkthrough",
         "type": "external-link",
-        "url": "https://mochajs.org/"
+        "url": "https://github.com/terrestris/polar"
       }
     ]
   },
   {
-    "id": "capstone",
-    "title": "Capstone Project",
-    "description": "Combine everything into a small geo-enabled app.",
-    "icon": "🚀",
+    "id": "polar-config",
+    "title": "Polar Configuration",
+    "description": "Configure layers, feeds and UI affordances in Polar.",
+    "icon": "🧊",
+    "tracks": ["polar"],
     "lessons": [
       {
-        "id": "brief",
-        "title": "Project Brief",
+        "id": "polar-sources",
+        "title": "Configuring data sources",
         "type": "markdown",
-        "content": "capstone/brief.md"
+        "content": "polar/config.md"
       },
       {
-        "id": "task-checklist",
+        "id": "polar-config-docs",
+        "title": "Configuration docs",
+        "type": "external-link",
+        "url": "https://github.com/terrestris/polar/tree/main/docs/configuration"
+      },
+      {
+        "id": "polar-config-tasks",
+        "title": "Polar config checklist",
+        "type": "task-list",
+        "tasksId": "polar_config_tasks"
+      }
+    ]
+  },
+  {
+    "id": "testing-masterportal",
+    "title": "Testing Masterportal Integrations",
+    "description": "Testing philosophy, tooling and best practices tailored to Masterportal.",
+    "icon": "🧪",
+    "tracks": ["masterportal"],
+    "lessons": [
+      {
+        "id": "testing-stack-masterportal",
+        "title": "Our Masterportal testing stack",
+        "type": "markdown",
+        "content": "testing/masterportal.md"
+      },
+      {
+        "id": "masterportal-tests",
+        "title": "Masterportal test examples",
+        "type": "external-link",
+        "url": "https://github.com/terrestris/masterportal/tree/master/test"
+      },
+      {
+        "id": "masterportal-test-tasks",
+        "title": "Testing checklist",
+        "type": "task-list",
+        "tasksId": "testing_masterportal_tasks"
+      }
+    ]
+  },
+  {
+    "id": "testing-polar",
+    "title": "Testing Polar Integrations",
+    "description": "Verification flows, fixtures and mocks for Polar services.",
+    "icon": "🧪",
+    "tracks": ["polar"],
+    "lessons": [
+      {
+        "id": "testing-stack-polar",
+        "title": "Polar testing scenarios",
+        "type": "markdown",
+        "content": "testing/polar.md"
+      },
+      {
+        "id": "polar-tests",
+        "title": "Polar repo tests",
+        "type": "external-link",
+        "url": "https://github.com/terrestris/polar/tree/main/packages/web/test"
+      },
+      {
+        "id": "polar-test-tasks",
+        "title": "Polar testing checklist",
+        "type": "task-list",
+        "tasksId": "testing_polar_tasks"
+      }
+    ]
+  },
+  {
+    "id": "capstone-masterportal",
+    "title": "Capstone Project (Masterportal)",
+    "description": "Combine everything into a Masterportal-powered geo app.",
+    "icon": "🚀",
+    "tracks": ["masterportal"],
+    "lessons": [
+      {
+        "id": "brief-masterportal",
+        "title": "Project Brief",
+        "type": "markdown",
+        "content": "capstone/masterportal.md"
+      },
+      {
+        "id": "task-checklist-masterportal",
         "title": "Build Checklist",
         "type": "task-list",
-        "tasksId": "capstone_tasks"
+        "tasksId": "capstone_masterportal_tasks"
+      }
+    ]
+  },
+  {
+    "id": "capstone-polar",
+    "title": "Capstone Project (Polar)",
+    "description": "Ship a Polar-flavoured geo experience.",
+    "icon": "🚀",
+    "tracks": ["polar"],
+    "lessons": [
+      {
+        "id": "brief-polar",
+        "title": "Project Brief",
+        "type": "markdown",
+        "content": "capstone/polar.md"
+      },
+      {
+        "id": "task-checklist-polar",
+        "title": "Build Checklist",
+        "type": "task-list",
+        "tasksId": "capstone_polar_tasks"
       }
     ]
   }

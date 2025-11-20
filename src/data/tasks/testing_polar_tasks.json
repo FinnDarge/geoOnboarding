@@ -1,0 +1,5 @@
+[
+  { "id": "api-stubs", "text": "Stub network calls for GeoJSON or tile endpoints in your Polar tests." },
+  { "id": "ui-assertions", "text": "Assert that filters/search update the map state as expected." },
+  { "id": "projection-coverage", "text": "Add a regression test covering projection/coordinate handling." }
+]
