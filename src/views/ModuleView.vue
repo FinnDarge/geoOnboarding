@@ -1,8 +1,9 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { getModuleById, getModulesForTrack } from '../data/moduleUtils';
+import { getBadgeForModule } from '../data/badges';
 import LessonRenderer from '../components/LessonRenderer.vue';
 import ProgressBar from '../components/ProgressBar.vue';
 
@@ -10,7 +11,7 @@ const route = useRoute();
 const router = useRouter();
 const store = useStore();
 
-const availableModules = computed(() => getModulesForTrack(store.state.tracks.selected));
+const availableModules = computed(() => getModulesForTrack(store.state.tracks.enabled));
 const moduleData = computed(() => availableModules.value.find((m) => m.id === route.params.id));
 const lockedModule = computed(() => !moduleData.value && getModuleById(route.params.id));
 
@@ -39,6 +40,21 @@ const markCompleted = () => {
     lessonId: selectedLesson.value.id
   });
 };
+
+// Badge awarding on module completion
+watch(moduleProgress, (progress) => {
+  console.log(`[MODULE VIEW BADGE DEBUG] Module ${route.params.id} progress: ${progress}%`);
+  if (progress === 100) {
+    const badge = getBadgeForModule(route.params.id);
+    console.log(`[MODULE VIEW BADGE DEBUG] Module ${route.params.id} complete! Badge:`, badge);
+    if (badge && !store.getters['badges/hasBadge'](badge.id)) {
+      console.log(`[MODULE VIEW BADGE DEBUG] Earning badge: ${badge.id}`);
+      store.commit('badges/earnBadge', badge.id);
+    } else if (badge) {
+      console.log(`[MODULE VIEW BADGE DEBUG] Badge ${badge.id} already earned`);
+    }
+  }
+});
 </script>
 
 <template>

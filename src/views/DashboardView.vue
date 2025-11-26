@@ -1,19 +1,28 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
-import { getModulesForTrack, tracks } from '../data/moduleUtils';
+import { getModulesForTrack, tracks, getAllModules } from '../data/moduleUtils';
+import { getBadgeForModule, badgeDefinitions } from '../data/badges';
 import ModuleCard from '../components/ModuleCard.vue';
 import ProgressBar from '../components/ProgressBar.vue';
+import BadgeMiniShowcase from '../components/BadgeMiniShowcase.vue';
 
 const store = useStore();
 const overallProgress = computed(() => store.getters['progress/overallProgress']);
 
 const moduleProgress = (moduleId) => store.getters['progress/moduleProgress'](moduleId);
 
-const selectedTrack = computed(() => store.getters['tracks/selectedTrack']);
-const trackSelectionEnabled = computed(() => moduleProgress('geo-basics') === 100);
+const enabledTracks = computed(() => store.getters['tracks/enabledTracks']);
+
+// All common modules must be completed to unlock specialization tracks
+const commonModules = ['js-fundamentals', 'vue-basics', 'geo-basics'];
+const trackUnlocked = computed(() => 
+  commonModules.every(moduleId => moduleProgress(moduleId) === 100)
+);
+
 const specializationTracks = computed(() => tracks.filter((track) => track.id !== 'common'));
-const availableModules = computed(() => getModulesForTrack(selectedTrack.value));
+const availableModules = computed(() => getModulesForTrack(enabledTracks.value));
+const isTrackEnabled = (trackId) => store.getters['tracks/isTrackEnabled'](trackId);
 
 const nextLesson = computed(() => {
   for (const module of availableModules.value) {
@@ -29,12 +38,39 @@ const nextLesson = computed(() => {
 
 const showResetConfirm = ref(false);
 
+const completeCommonModules = () => {
+  const commonModuleIds = ['js-fundamentals', 'vue-basics', 'geo-basics'];
+  commonModuleIds.forEach(moduleId => {
+    const module = availableModules.value.find(m => m.id === moduleId);
+    if (module) {
+      module.lessons.forEach(lesson => {
+        store.commit('progress/completeLesson', {
+          moduleId: moduleId,
+          lessonId: lesson.id
+        });
+      });
+    }
+  });
+};
+
 const resetProgress = () => {
   if (showResetConfirm.value) {
     store.commit('progress/resetProgress');
     store.commit('quiz/resetQuizResults');
     store.commit('tracks/resetTrack');
+    store.commit('badges/resetBadges');
+    
+    // Clear task list data from localStorage
+    Object.keys(localStorage).forEach(key => {
+      if (key.startsWith('onboarding-tasks-')) {
+        localStorage.removeItem(key);
+      }
+    });
+    
     showResetConfirm.value = false;
+    
+    // Reload page to reset task list components
+    window.location.reload();
   } else {
     showResetConfirm.value = true;
     setTimeout(() => {
@@ -43,10 +79,66 @@ const resetProgress = () => {
   }
 };
 
-const selectTrack = (trackId) => {
-  if (!trackSelectionEnabled.value) return;
-  store.commit('tracks/selectTrack', trackId);
+const toggleTrack = (trackId) => {
+  if (!trackUnlocked.value) return;
+  store.commit('tracks/toggleTrack', trackId);
 };
+
+// Badge awarding logic - watch ALL module completion (not just active tracks)
+watch(
+  () => {
+    // Check ALL modules from ALL tracks (common, masterportal, polar)
+    const allModules = getAllModules();
+    console.log('[BADGE DEBUG] All modules:', allModules.map(m => m.id));
+    return allModules.map(m => ({ id: m.id, progress: moduleProgress(m.id) }));
+  },
+  (modules) => {
+    console.log('[BADGE DEBUG] Module progress check:', modules);
+    modules.forEach(({ id, progress }) => {
+      console.log(`[BADGE DEBUG] Module ${id}: ${progress}%`);
+      if (progress === 100) {
+        const badge = getBadgeForModule(id);
+        console.log(`[BADGE DEBUG] Module ${id} complete! Badge:`, badge);
+        if (badge && !store.getters['badges/hasBadge'](badge.id)) {
+          console.log(`[BADGE DEBUG] Earning badge: ${badge.id}`);
+          store.commit('badges/earnBadge', badge.id);
+        } else if (badge) {
+          console.log(`[BADGE DEBUG] Badge ${badge.id} already earned`);
+        }
+      }
+    });
+  },
+  { deep: true, immediate: true }
+);
+
+// Badge awarding for track completion - check ALL tracks regardless of enabled status
+watch(
+  () => getAllModules().map(m => moduleProgress(m.id)),
+  () => {
+    // Check both masterportal and polar tracks
+    console.log('[TRACK BADGE DEBUG] Checking track completion...');
+    ['masterportal', 'polar'].forEach(track => {
+      const trackBadge = badgeDefinitions[`${track}-track`];
+      console.log(`[TRACK BADGE DEBUG] Track: ${track}, Badge:`, trackBadge);
+      if (trackBadge && trackBadge.requiredModules) {
+        const moduleStatuses = trackBadge.requiredModules.map(moduleId => ({
+          id: moduleId,
+          progress: moduleProgress(moduleId)
+        }));
+        console.log(`[TRACK BADGE DEBUG] ${track} required modules:`, moduleStatuses);
+        const allComplete = trackBadge.requiredModules.every(moduleId => moduleProgress(moduleId) === 100);
+        console.log(`[TRACK BADGE DEBUG] ${track} all complete:`, allComplete);
+        if (allComplete && !store.getters['badges/hasBadge'](trackBadge.id)) {
+          console.log(`[TRACK BADGE DEBUG] Earning track badge: ${trackBadge.id}`);
+          store.commit('badges/earnBadge', trackBadge.id);
+        } else if (allComplete) {
+          console.log(`[TRACK BADGE DEBUG] Track badge ${trackBadge.id} already earned`);
+        }
+      }
+    });
+  },
+  { deep: true, immediate: true }
+);
 </script>
 
 <template>
@@ -62,24 +154,29 @@ const selectTrack = (trackId) => {
       </div>
       <div class="dashboard__progress">
         <ProgressBar label="Overall Progress" :value="overallProgress" />
-        <button @click="resetProgress" class="reset-btn" :class="{ 'reset-btn--confirm': showResetConfirm }">
-          {{ showResetConfirm ? 'Click again to confirm' : 'Reset Progress' }}
-        </button>
+        <BadgeMiniShowcase />
+        <div class="dashboard__actions">
+          <button @click="completeCommonModules" class="debug-btn" title="Debug: Complete all common modules">
+            🚀 Skip to Specialization
+          </button>
+          <button @click="resetProgress" class="reset-btn" :class="{ 'reset-btn--confirm': showResetConfirm }">
+            {{ showResetConfirm ? 'Click again to confirm' : 'Reset Progress' }}
+          </button>
+        </div>
       </div>
     </section>
 
     <section class="card dashboard__tracks">
       <div class="dashboard__tracks-header">
         <div>
-          <p class="eyebrow">Choose your track</p>
-          <h3>Specialize after Geo Basics</h3>
+          <p class="eyebrow">Choose your specializations</p>
+          <h3>Unlock Tracks after Geo Basics</h3>
           <p class="muted">
-            Finish Geo Basics to unlock a track. Your dashboard and progress will adapt to the modules in the selected
-            specialization.
+            Complete Geo Basics to unlock specialization tracks. You can activate both tracks and work on them in parallel or one after another.
           </p>
         </div>
-        <div class="dashboard__track-status" :class="{ 'dashboard__track-status--ready': trackSelectionEnabled }">
-          {{ trackSelectionEnabled ? 'Track unlocked' : 'Complete Geo Basics to unlock' }}
+        <div class="dashboard__track-status" :class="{ 'dashboard__track-status--ready': trackUnlocked }">
+          {{ trackUnlocked ? 'Tracks unlocked' : 'Complete all core modules to unlock' }}
         </div>
       </div>
       <div class="dashboard__track-grid">
@@ -88,8 +185,8 @@ const selectTrack = (trackId) => {
           :key="track.id"
           class="track-card"
           :class="{
-            'track-card--selected': selectedTrack === track.id,
-            'track-card--locked': !trackSelectionEnabled
+            'track-card--selected': isTrackEnabled(track.id),
+            'track-card--locked': !trackUnlocked
           }"
         >
           <div class="track-card__header">
@@ -97,15 +194,16 @@ const selectTrack = (trackId) => {
               <p class="eyebrow">{{ track.title }}</p>
               <h4>{{ track.description }}</h4>
             </div>
-            <span v-if="selectedTrack === track.id" class="track-card__badge">Selected</span>
+            <span v-if="isTrackEnabled(track.id)" class="track-card__badge">Active</span>
           </div>
           <p class="muted">{{ track.modules.length }} modules</p>
           <button
             class="track-card__button"
-            :disabled="!trackSelectionEnabled || selectedTrack === track.id"
-            @click="selectTrack(track.id)"
+            :class="{ 'track-card__button--active': isTrackEnabled(track.id) }"
+            :disabled="!trackUnlocked"
+            @click="toggleTrack(track.id)"
           >
-            {{ selectedTrack === track.id ? 'Current track' : trackSelectionEnabled ? 'Select this track' : 'Locked' }}
+            {{ isTrackEnabled(track.id) ? 'Deactivate' : trackUnlocked ? 'Activate track' : 'Locked' }}
           </button>
         </div>
       </div>
@@ -162,7 +260,32 @@ const selectTrack = (trackId) => {
   gap: 12px;
 }
 
+.dashboard__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.debug-btn {
+  flex: 1;
+  padding: 8px 14px;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 8px;
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.debug-btn:hover {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.5);
+  transform: translateY(-1px);
+}
+
 .reset-btn {
+  flex: 1;
   padding: 8px 14px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
@@ -275,6 +398,17 @@ const selectTrack = (trackId) => {
   color: var(--color-text);
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+.track-card__button--active {
+  background: var(--color-accent);
+  color: #0f172a;
+  border-color: var(--color-accent);
+}
+
+.track-card__button--active:hover {
+  background: #16a34a;
+  border-color: #16a34a;
 }
 
 .track-card__button[disabled] {

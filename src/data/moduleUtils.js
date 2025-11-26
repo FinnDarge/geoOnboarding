@@ -9,13 +9,17 @@ const modules = tracks.flatMap((track) =>
   }))
 );
 
-const getModulesForTrack = (selectedTrack) =>
-  modules.filter(
-    (module) => module.track === 'common' || (selectedTrack ? module.track === selectedTrack : module.track === 'common')
+const getModulesForTrack = (enabledTracks) => {
+  const tracksArray = Array.isArray(enabledTracks) ? enabledTracks : (enabledTracks ? [enabledTracks] : []);
+  return modules.filter(
+    (module) => module.track === 'common' || tracksArray.includes(module.track)
   );
+};
 
 const getTrackById = (trackId) => tracks.find((track) => track.id === trackId);
 
 const getModuleById = (moduleId) => modules.find((module) => module.id === moduleId);
 
-export { tracks, modules, getModuleById, getModulesForTrack, getTrackById };
+const getAllModules = () => modules;
+
+export { tracks, modules, getModuleById, getModulesForTrack, getTrackById, getAllModules };

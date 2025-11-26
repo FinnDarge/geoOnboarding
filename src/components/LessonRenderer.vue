@@ -1,5 +1,6 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
+import { useStore } from 'vuex';
 import { marked } from 'marked';
 import Quiz from './Quiz.vue';
 import TaskList from './TaskList.vue';
@@ -18,6 +19,12 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['complete']);
+
+const store = useStore();
+
+const isCompleted = computed(() => 
+  store.getters['progress/isLessonCompleted'](props.moduleId, props.lesson.id)
+);
 
 const markdownFiles = import.meta.glob('../data/content/**/*.md', {
   query: '?raw',
@@ -38,7 +45,11 @@ const shouldShowCompleteButton = computed(() => manualCompletionTypes.includes(p
 
 const shouldShowCoordinateTransformer = computed(() => props.lesson.id === 'projections-theory');
 
-const triggerCompletion = () => emit('complete');
+const triggerCompletion = () => {
+  if (!isCompleted.value) {
+    emit('complete');
+  }
+};
 </script>
 
 <template>
@@ -74,7 +85,15 @@ const triggerCompletion = () => emit('complete');
       <p>Lesson type not supported yet.</p>
     </div>
 
-    <button v-if="shouldShowCompleteButton" class="ghost-btn" @click="triggerCompletion">Mark as completed</button>
+    <button 
+      v-if="shouldShowCompleteButton" 
+      class="ghost-btn" 
+      :class="{ 'ghost-btn--completed': isCompleted }"
+      @click="triggerCompletion"
+      :disabled="isCompleted"
+    >
+      {{ isCompleted ? '✓ Completed' : 'Mark as completed' }}
+    </button>
   </div>
 </template>
 
@@ -99,6 +118,18 @@ const triggerCompletion = () => emit('complete');
 
 .ghost-btn {
   margin-top: 18px;
+  transition: all 0.3s ease;
+}
+
+.ghost-btn--completed {
+  background: var(--color-accent);
+  color: #0f172a;
+  border-color: var(--color-accent);
+  cursor: default;
+}
+
+.ghost-btn:disabled {
+  opacity: 1;
 }
 
 .lesson__type {

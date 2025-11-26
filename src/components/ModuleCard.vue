@@ -1,5 +1,7 @@
 <script setup>
 import { computed } from 'vue';
+import { useStore } from 'vuex';
+import { getBadgeForModule } from '../data/badges';
 import ProgressBar from './ProgressBar.vue';
 
 const props = defineProps({
@@ -13,7 +15,16 @@ const props = defineProps({
   }
 });
 
+const store = useStore();
+
 const progressPercent = computed(() => Math.round(props.progress));
+const isCompleted = computed(() => progressPercent.value === 100);
+
+const moduleBadge = computed(() => getBadgeForModule(props.module.id));
+const hasBadge = computed(() => {
+  if (!moduleBadge.value) return false;
+  return store.getters['badges/hasBadge'](moduleBadge.value.id);
+});
 </script>
 
 <template>
@@ -21,6 +32,11 @@ const progressPercent = computed(() => Math.round(props.progress));
     <div class="module-card__icon">{{ props.module.icon }}</div>
     <h3 class="module-card__title">{{ props.module.title }}</h3>
     <p class="module-card__description">{{ props.module.description }}</p>
+
+    <!-- Badge overlay when module completed -->
+    <div v-if="isCompleted && hasBadge && moduleBadge" class="module-card__badge">
+      <img :src="moduleBadge.image" :alt="moduleBadge.name" class="module-card__badge-image" />
+    </div>
 
     <!-- Spacer ensures progress section sticks to the bottom even with short descriptions -->
     <div class="module-card__progress" aria-label="Module progress">
@@ -45,6 +61,8 @@ const progressPercent = computed(() => Math.round(props.progress));
   color: inherit;
   box-shadow: var(--shadow-soft);
   transition: transform 0.2s ease, background 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .module-card:hover {
@@ -104,5 +122,35 @@ const progressPercent = computed(() => Math.round(props.progress));
   font-size: 14px;
   font-weight: 600;
   color: var(--color-text);
+}
+
+.module-card__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 48px;
+  height: 48px;
+  animation: badgePop 0.5s ease-out;
+}
+
+.module-card__badge-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes badgePop {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
 }
 </style>

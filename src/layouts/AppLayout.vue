@@ -1,6 +1,7 @@
 <script setup>
 import Sidebar from '../components/Sidebar.vue';
 import TopBar from '../components/TopBar.vue';
+import BadgeUnlockModal from '../components/BadgeUnlockModal.vue';
 
 const props = defineProps({
   title: {
@@ -23,6 +24,7 @@ const props = defineProps({
         <slot />
       </main>
     </div>
+    <BadgeUnlockModal />
   </div>
 </template>
 

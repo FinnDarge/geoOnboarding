@@ -9,11 +9,12 @@ const store = useStore();
 
 const navItems = computed(() => [
   { label: 'Dashboard', to: { name: 'dashboard' }, icon: '📊' },
-  ...getModulesForTrack(store.state.tracks.selected).map((module) => ({
+  ...getModulesForTrack(store.state.tracks.enabled).map((module) => ({
     label: module.title,
     to: { name: 'module', params: { id: module.id } },
     icon: module.icon
   })),
+  { label: 'Achievements', to: { name: 'achievements' }, icon: '🏆' },
   { label: 'Team', to: { name: 'team' }, icon: '👥' }
 ]);
 
@@ -24,6 +25,9 @@ const isActive = (to) => {
   }
   if (to.name === 'team') {
     return route.name === 'team';
+  }
+  if (to.name === 'achievements') {
+    return route.name === 'achievements';
   }
   return route.params.id === to.params?.id;
 };

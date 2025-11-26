@@ -47,9 +47,9 @@ const progress = {
   getters: {
     isLessonCompleted: (state) => (moduleId, lessonId) =>
       state.completedLessons.includes(`${moduleId}:${lessonId}`),
-    moduleProgress: (state, getters, rootState) => (moduleId) => {
-      const activeModules = getModulesForTrack(rootState.tracks.selected);
-      const module = activeModules.find((m) => m.id === moduleId);
+    moduleProgress: (state) => (moduleId) => {
+      // Get module by ID directly, not filtered by active tracks
+      const module = getModuleById(moduleId);
       if (!module) return 0;
       const total = module.lessons.length;
       if (!total) return 0;
@@ -59,7 +59,7 @@ const progress = {
       return Math.round((completed / total) * 100);
     },
     overallProgress: (state, getters, rootState) => {
-      const activeModules = getModulesForTrack(rootState.tracks.selected);
+      const activeModules = getModulesForTrack(rootState.tracks.enabled);
       const totalLessons = activeModules.reduce((sum, module) => sum + module.lessons.length, 0);
       if (!totalLessons) return 0;
       const completed = activeModules.reduce((sum, module) => {
@@ -76,23 +76,29 @@ const progress = {
 const tracks = {
   namespaced: true,
   state: () => ({
-    selected: persisted.tracks?.selected || null
+    enabled: persisted.tracks?.enabled || []
   }),
   mutations: {
-    selectTrack(state, trackId) {
-      state.selected = trackId;
+    toggleTrack(state, trackId) {
+      const index = state.enabled.indexOf(trackId);
+      if (index > -1) {
+        state.enabled.splice(index, 1);
+      } else {
+        state.enabled.push(trackId);
+      }
     },
     resetTrack(state) {
-      state.selected = null;
+      state.enabled = [];
     }
   },
   getters: {
-    selectedTrack: (state) => state.selected,
-    hasSelectedTrack: (state) => Boolean(state.selected),
+    enabledTracks: (state) => state.enabled,
+    isTrackEnabled: (state) => (trackId) => state.enabled.includes(trackId),
+    hasEnabledTracks: (state) => state.enabled.length > 0,
     isModuleActive: (state) => (moduleId) => {
       const module = getModuleById(moduleId);
       if (!module) return false;
-      return module.track === 'common' || module.track === state.selected;
+      return module.track === 'common' || state.enabled.includes(module.track);
     }
   }
 };
@@ -112,6 +118,43 @@ const quiz = {
   }
 };
 
+const badges = {
+  namespaced: true,
+  state: () => ({
+    earned: persisted.badges?.earned || [],
+    lastEarned: null,
+    viewedBadges: persisted.badges?.viewedBadges || []
+  }),
+  mutations: {
+    earnBadge(state, badgeId) {
+      if (!state.earned.includes(badgeId)) {
+        state.earned.push(badgeId);
+        state.lastEarned = badgeId;
+      }
+    },
+    markBadgeViewed(state, badgeId) {
+      if (!state.viewedBadges.includes(badgeId)) {
+        state.viewedBadges.push(badgeId);
+      }
+      if (state.lastEarned === badgeId) {
+        state.lastEarned = null;
+      }
+    },
+    resetBadges(state) {
+      state.earned = [];
+      state.lastEarned = null;
+      state.viewedBadges = [];
+    }
+  },
+  getters: {
+    hasBadge: (state) => (badgeId) => state.earned.includes(badgeId),
+    earnedBadges: (state) => state.earned,
+    unviewedBadges: (state) => state.earned.filter(id => !state.viewedBadges.includes(id)),
+    unviewedCount: (state, getters) => getters.unviewedBadges.length,
+    lastEarnedBadge: (state) => state.lastEarned
+  }
+};
+
 const persistPlugin = (store) => {
   store.subscribe((mutation, state) => {
     if (typeof window === 'undefined') return;
@@ -119,7 +162,8 @@ const persistPlugin = (store) => {
       user: state.user,
       progress: state.progress,
       quiz: state.quiz,
-      tracks: state.tracks
+      tracks: state.tracks,
+      badges: state.badges
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
   });
@@ -130,7 +174,8 @@ export default createStore({
     user,
     progress,
     quiz,
-    tracks
+    tracks,
+    badges
   },
   plugins: [persistPlugin]
 });

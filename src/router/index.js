@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import DashboardView from '../views/DashboardView.vue';
 import ModuleView from '../views/ModuleView.vue';
 import TeamView from '../views/TeamView.vue';
+import AchievementsView from '../views/AchievementsView.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -21,6 +22,11 @@ const router = createRouter({
       path: '/team',
       name: 'team',
       component: TeamView
+    },
+    {
+      path: '/achievements',
+      name: 'achievements',
+      component: AchievementsView
     }
   ]
 });

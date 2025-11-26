@@ -1,0 +1,96 @@
+export const badgeDefinitions = {
+  'js-fundamentals': {
+    id: 'js-fundamentals',
+    name: 'JavaScript Master',
+    description: 'Completed JavaScript Fundamentals module',
+    image: '/src/data/img/badges/javascript.png',
+    moduleId: 'js-fundamentals',
+    type: 'module',
+    track: 'common'
+  },
+  'vue-basics': {
+    id: 'vue-basics',
+    name: 'Vue Expert',
+    description: 'Mastered Vue + Vuex Basics',
+    image: '/src/data/img/badges/vue.png',
+    moduleId: 'vue-basics',
+    type: 'module',
+    track: 'common'
+  },
+  'geo-basics': {
+    id: 'geo-basics',
+    name: 'Geo Specialist',
+    description: 'Completed Geo Basics - Projections, WMS, WFS',
+    image: '/src/data/img/badges/geoBasics.png',
+    moduleId: 'geo-basics',
+    type: 'module',
+    track: 'common'
+  },
+  'masterportal': {
+    id: 'masterportal',
+    name: 'Masterportal Expert',
+    description: 'Completed Masterportal Overview',
+    image: '/src/data/img/badges/masterportalOverview.png',
+    moduleId: 'masterportal',
+    type: 'module',
+    track: 'masterportal'
+  },
+  'testing': {
+    id: 'testing',
+    name: 'Testing Guru',
+    description: 'Mastered Testing with Mocha/Chai/Sinon',
+    image: '/src/data/img/badges/testing.png',
+    moduleId: 'testing',
+    type: 'module',
+    track: 'masterportal'
+  },
+  'capstone': {
+    id: 'capstone',
+    name: 'Capstone Champion',
+    description: 'Completed the Capstone Project',
+    image: '/src/data/img/badges/capstoneProject.png',
+    moduleId: 'capstone',
+    type: 'module',
+    track: 'masterportal'
+  },
+  'polar-mapping': {
+    id: 'polar-mapping',
+    name: 'Polar Data Expert',
+    description: 'Completed Polar Mapping Essentials',
+    image: '/src/data/img/badges/polarBasics.png',
+    moduleId: 'polar-mapping',
+    type: 'module',
+    track: 'polar'
+  },
+  'masterportal-track': {
+    id: 'masterportal-track',
+    name: 'Masterportal Master',
+    description: 'Completed the entire Masterportal track',
+    image: '/src/data/img/badges/masterportalTrackCompletion.png',
+    type: 'track',
+    track: 'masterportal',
+    requiredModules: ['js-fundamentals', 'vue-basics', 'geo-basics', 'masterportal', 'testing', 'capstone']
+  },
+  'polar-track': {
+    id: 'polar-track',
+    name: 'Polar Master',
+    description: 'Completed the entire Polar track',
+    image: '/src/data/img/badges/polarTrackCompletion.png',
+    type: 'track',
+    track: 'polar',
+    requiredModules: ['js-fundamentals', 'vue-basics', 'geo-basics', 'polar-mapping']
+  }
+};
+
+export const getAllBadges = () => Object.values(badgeDefinitions);
+
+export const getModuleBadges = () => 
+  Object.values(badgeDefinitions).filter(badge => badge.type === 'module');
+
+export const getTrackBadges = () => 
+  Object.values(badgeDefinitions).filter(badge => badge.type === 'track');
+
+export const getBadgeById = (id) => badgeDefinitions[id] || null;
+
+export const getBadgeForModule = (moduleId) => 
+  Object.values(badgeDefinitions).find(badge => badge.moduleId === moduleId);
