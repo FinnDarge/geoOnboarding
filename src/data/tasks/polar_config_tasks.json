@@ -1,0 +1,5 @@
+[
+  { "id": "projection", "text": "Identify which EPSG codes your target pole needs and note their bounds." },
+  { "id": "service", "text": "Add one WMS and one WMTS entry to a config draft referencing the onboarding repo resources." },
+  { "id": "validation", "text": "Share a screenshot or snippet showing the configured layers rendering in the correct projection." }
+]

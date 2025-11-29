@@ -15,6 +15,21 @@ const availableModules = computed(() => getModulesForTrack(store.state.tracks.en
 const moduleData = computed(() => availableModules.value.find((m) => m.id === route.params.id));
 const lockedModule = computed(() => !moduleData.value && getModuleById(route.params.id));
 
+const variantRedirectTarget = computed(() => {
+  if (!lockedModule.value || !store.state.tracks.selected) return null;
+  if (!lockedModule.value.variantOf) return null;
+  return availableModules.value.find((module) => module.variantOf === lockedModule.value.variantOf) || null;
+});
+
+watch(
+  () => variantRedirectTarget.value,
+  (target) => {
+    if (target && target.id !== route.params.id) {
+      router.replace({ name: 'module', params: { id: target.id }, query: route.query });
+    }
+  }
+);
+
 const lessons = computed(() => moduleData.value?.lessons || []);
 
 const selectedLessonId = computed(() => route.query.lesson || lessons.value[0]?.id);

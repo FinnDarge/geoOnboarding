@@ -127,17 +127,24 @@
           ]
         },
         {
-          "id": "testing",
-          "title": "Testing with Mocha/Chai/Sinon",
-          "description": "Testing philosophy, tooling and best practices.",
+          "id": "testing-masterportal",
+          "title": "Testing Masterportal Features",
+          "description": "Mocha/Chai/Sinon patterns focused on Masterportal extensions.",
           "icon": "🧪",
           "track": "masterportal",
+          "variantOf": "testing",
           "lessons": [
             {
               "id": "testing-stack",
-              "title": "Our Testing Stack",
+              "title": "Masterportal Testing Stack",
               "type": "markdown",
-              "content": "testing/stack.md"
+              "content": "testing/masterportal.md"
+            },
+            {
+              "id": "testing-checklist",
+              "title": "Testing Checklist",
+              "type": "task-list",
+              "tasksId": "testing_masterportal_tasks"
             },
             {
               "id": "mocha-resources",
@@ -148,23 +155,24 @@
           ]
         },
         {
-          "id": "capstone",
-          "title": "Capstone Project",
-          "description": "Combine everything into a small geo-enabled app.",
+          "id": "capstone-masterportal",
+          "title": "Capstone: Masterportal",
+          "description": "Ship a small geo app using Masterportal widgets and custom layers.",
           "icon": "🚀",
           "track": "masterportal",
+          "variantOf": "capstone",
           "lessons": [
             {
               "id": "brief",
               "title": "Project Brief",
               "type": "markdown",
-              "content": "capstone/brief.md"
+              "content": "capstone/masterportal.md"
             },
             {
               "id": "task-checklist",
               "title": "Build Checklist",
               "type": "task-list",
-              "tasksId": "capstone_tasks"
+              "tasksId": "capstone_masterportal_tasks"
             }
           ]
         }
@@ -176,23 +184,100 @@
       "description": "Focus on polar data, ice observations and remote sensing flows.",
       "modules": [
         {
-          "id": "polar-mapping",
-          "title": "Polar Mapping Essentials",
-          "description": "Work with cryosphere data and polar map projections.",
+          "id": "polar-overview",
+          "title": "Polar Overview",
+          "description": "Orientation to cryosphere datasets, projections, and workflows.",
           "icon": "❄️",
           "track": "polar",
           "lessons": [
             {
-              "id": "polar-overview",
-              "title": "Polar Data Overview",
+              "id": "polar-landscape",
+              "title": "Polar Data Landscape",
               "type": "markdown",
               "content": "polar/overview.md"
+            },
+            {
+              "id": "repo-walkthrough",
+              "title": "Repo Walkthrough",
+              "type": "external-link",
+              "url": "https://github.com/PolarGeospatialCenter/pgc-inputs"
             },
             {
               "id": "sea-ice",
               "title": "Sea Ice Observations",
               "type": "external-link",
               "url": "https://seaice.uni-bremen.de/"
+            }
+          ]
+        },
+        {
+          "id": "polar-config",
+          "title": "Polar Configuration",
+          "description": "Connect to repo data bundles and wire polar map services.",
+          "icon": "🧭",
+          "track": "polar",
+          "lessons": [
+            {
+              "id": "config-playbook",
+              "title": "Config Playbook",
+              "type": "markdown",
+              "content": "polar/config.md"
+            },
+            {
+              "id": "config-checklist",
+              "title": "Configuration Checklist",
+              "type": "task-list",
+              "tasksId": "polar_config_tasks"
+            }
+          ]
+        },
+        {
+          "id": "testing-polar",
+          "title": "Testing Polar Flows",
+          "description": "Adapt the testing stack to cryosphere data pipelines.",
+          "icon": "🧪",
+          "track": "polar",
+          "variantOf": "testing",
+          "lessons": [
+            {
+              "id": "testing-stack",
+              "title": "Polar Testing Stack",
+              "type": "markdown",
+              "content": "testing/polar.md"
+            },
+            {
+              "id": "testing-checklist",
+              "title": "Testing Checklist",
+              "type": "task-list",
+              "tasksId": "testing_polar_tasks"
+            },
+            {
+              "id": "vrt-resources",
+              "title": "GDAL/VRT Resources",
+              "type": "external-link",
+              "url": "https://github.com/OSGeo/gdal/tree/master/gdal/frmts/vrt"
+            }
+          ]
+        },
+        {
+          "id": "capstone-polar",
+          "title": "Capstone: Polar",
+          "description": "Deliver a polar-ready viewer combining ice and snow products.",
+          "icon": "🚀",
+          "track": "polar",
+          "variantOf": "capstone",
+          "lessons": [
+            {
+              "id": "brief",
+              "title": "Project Brief",
+              "type": "markdown",
+              "content": "capstone/polar.md"
+            },
+            {
+              "id": "task-checklist",
+              "title": "Build Checklist",
+              "type": "task-list",
+              "tasksId": "capstone_polar_tasks"
             }
           ]
         }
