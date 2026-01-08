@@ -74,9 +74,9 @@ const totalCount = computed(() => allBadges.length);
   <div class="badge-showcase">
     <div class="badge-showcase__header">
       <div>
-        <h3 class="badge-showcase__title">Your Achievements</h3>
+        <h3 class="badge-showcase__title">Deine Erfolge</h3>
         <p class="badge-showcase__stats">
-          {{ earnedCount }} / {{ totalCount }} badges earned
+          {{ earnedCount }} / {{ totalCount }} Abzeichen erhalten
         </p>
       </div>
       <div class="badge-showcase__progress-ring">
@@ -110,7 +110,7 @@ const totalCount = computed(() => allBadges.length);
     <div v-if="groupByTrack" class="badge-showcase__groups">
       <!-- Common Track Badges -->
       <div v-if="commonBadges.length > 0" class="badge-group">
-        <h4 class="badge-group__title">Core Fundamentals</h4>
+        <h4 class="badge-group__title">Grundlagen</h4>
         <div class="badge-showcase__grid">
           <BadgeCard
             v-for="badge in commonBadges"
@@ -124,7 +124,7 @@ const totalCount = computed(() => allBadges.length);
 
       <!-- Masterportal Track Badges -->
       <div v-if="masterportalModuleBadges.length > 0" class="badge-group">
-        <h4 class="badge-group__title">🏛️ Masterportal Specialization</h4>
+        <h4 class="badge-group__title">🏛️ Masterportal-Spezialisierung</h4>
         <div class="badge-showcase__grid">
           <BadgeCard
             v-for="badge in masterportalModuleBadges"
@@ -138,7 +138,7 @@ const totalCount = computed(() => allBadges.length);
 
       <!-- Polar Track Badges -->
       <div v-if="polarModuleBadges.length > 0" class="badge-group">
-        <h4 class="badge-group__title">❄️ Polar Data Specialization</h4>
+        <h4 class="badge-group__title">🗺️ POLAR-Spezialisierung</h4>
         <div class="badge-showcase__grid">
           <BadgeCard
             v-for="badge in polarModuleBadges"
@@ -152,7 +152,7 @@ const totalCount = computed(() => allBadges.length);
 
       <!-- Track Completion Badges -->
       <div v-if="trackCompletionBadges.length > 0" class="badge-group">
-        <h4 class="badge-group__title">🏆 Track Mastery</h4>
+        <h4 class="badge-group__title">🏆 Track-Meisterschaft</h4>
         <div class="badge-showcase__grid badge-showcase__grid--large">
           <BadgeCard
             v-for="badge in trackCompletionBadges"
@@ -176,7 +176,7 @@ const totalCount = computed(() => allBadges.length);
     </div>
 
     <p v-if="displayBadges.length === 0 && !groupByTrack" class="badge-showcase__empty">
-      No badges in this category yet. Keep learning to unlock achievements!
+      Noch keine Abzeichen in dieser Kategorie. Lerne weiter, um Erfolge freizuschalten!
     </p>
   </div>
 </template>

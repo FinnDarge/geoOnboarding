@@ -1,7 +1,7 @@
-Masterportal wraps OpenLayers with configuration-driven widgets. Learn the high-level blocks:
+Masterportal wrappet OpenLayers mit konfigurationsgesteuerten Widgets. Lerne die High-Level-Blöcke kennen:
 
-- **PortalConfig** files define layers, tools and UI modules.
-- **Addons** extend behaviors with Vue components.
-- **Services** encapsulate APIs (WMS, WFS, OGC).
+- **PortalConfig**-Dateien definieren Layer, Tools und UI-Module.
+- **Addons** erweitern Verhaltensweisen mit Vue-Komponenten.
+- **Services** kapseln APIs (WMS, WFS, OGC).
 
-Shadow a teammate to see how config changes roll out to production.
+Begleite ein Teammitglied, um zu sehen, wie Config-Änderungen in die Produktion ausgerollt werden.

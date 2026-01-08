@@ -41,8 +41,8 @@ const handleBackdropClick = (event) => {
       <div v-if="showModal && currentBadge" class="modal-backdrop" @click="handleBackdropClick">
         <div class="modal-content">
           <div class="modal-header">
-            <h2 class="modal-title">🎉 Badge Unlocked!</h2>
-            <button class="modal-close" @click="closeModal" aria-label="Close">×</button>
+            <h2 class="modal-title">🎉 Abzeichen freigeschaltet!</h2>
+            <button class="modal-close" @click="closeModal" aria-label="Schließen">×</button>
           </div>
           
           <div class="modal-body">
@@ -54,7 +54,7 @@ const handleBackdropClick = (event) => {
           </div>
           
           <div class="modal-footer">
-            <button class="btn-primary" @click="closeModal">Awesome!</button>
+            <button class="btn-primary" @click="closeModal">Fantastisch!</button>
           </div>
         </div>
       </div>

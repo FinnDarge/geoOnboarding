@@ -39,7 +39,7 @@ const hasMore = computed(() => earnedCount.value > 6);
       </div>
     </div>
     <div v-else class="badge-mini-showcase__empty">
-      <span class="empty-text">No badges yet</span>
+      <span class="empty-text">Noch keine Abzeichen</span>
     </div>
   </RouterLink>
 </template>

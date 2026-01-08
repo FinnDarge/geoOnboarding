@@ -1,23 +1,23 @@
-JavaScript is the foundation of everything we build. It powers our user interfaces, connects backend services, and integrates specialized geo libraries like OpenLayers and Masterportal. Without a solid grasp of JavaScript fundamentals, you won't be able to understand how our applications work or contribute effectively to the codebase.
+JavaScript ist die Grundlage für alles, was wir entwickeln. Es treibt unsere Benutzeroberflächen an, verbindet Backend-Services und integriert spezialisierte Geo-Bibliotheken wie OpenLayers und Masterportal. Ohne solides Verständnis der JavaScript-Grundlagen kannst du nicht verstehen, wie unsere Anwendungen funktionieren oder effektiv zum Code beitragen.
 
-## Why JavaScript Matters
+## Warum JavaScript wichtig ist
 
-Modern web applications are interactive, data-driven, and real-time. JavaScript makes this possible by running directly in the browser, handling user interactions, managing application state, and communicating with servers. In our geo applications, JavaScript orchestrates map rendering, layer management, feature selection, and coordinate transformations.
+Moderne Webanwendungen sind interaktiv, datengetrieben und in Echtzeit. JavaScript macht dies möglich, indem es direkt im Browser läuft, Benutzerinteraktionen verarbeitet, den Anwendungszustand verwaltet und mit Servern kommuniziert. In unseren Geo-Anwendungen orchestriert JavaScript das Karten-Rendering, Layer-Management, Feature-Auswahl und Koordinatentransformationen.
 
-## What You Need to Know
+## Was du wissen musst
 
-You should be comfortable with:
+Du solltest vertraut sein mit:
 
-- **Core language concepts** — variables, functions, objects, arrays, and control flow
-- **Asynchronous programming** — promises, async/await, and handling API responses
-- **Modern syntax** — ES modules, destructuring, arrow functions, and template literals
-- **DOM manipulation** — selecting elements, updating content, and handling events
-- **Error handling** — try/catch blocks and defensive coding practices
+- **Kernkonzepte der Sprache** — Variablen, Funktionen, Objekte, Arrays und Kontrollfluss
+- **Asynchrone Programmierung** — Promises, async/await und Verarbeitung von API-Antworten
+- **Moderne Syntax** — ES-Module, Destructuring, Arrow Functions und Template Literals
+- **DOM-Manipulation** — Elemente auswählen, Inhalte aktualisieren und Events behandeln
+- **Error Handling** — try/catch-Blöcke und defensive Programmierpraktiken
 
-These fundamentals appear everywhere in our codebase. Whether you're building a Vue component, configuring a Masterportal widget, or processing WFS responses, you'll rely on these JavaScript concepts daily.
+Diese Grundlagen erscheinen überall in unserer Codebasis. Egal ob du eine Vue-Komponente erstellst, ein Masterportal-Widget konfigurierst oder WFS-Antworten verarbeitest — du wirst täglich auf diese JavaScript-Konzepte angewiesen sein.
 
-## Learning Path
+## Lernpfad
 
-Start by reviewing the basics if anything feels unclear. The external resources linked in upcoming lessons provide comprehensive coverage of JavaScript mechanics. Focus on understanding over memorization — you'll get plenty of practice applying these concepts in real projects.
+Beginne damit, die Grundlagen zu wiederholen, wenn irgendetwas unklar ist. Die externen Ressourcen in den kommenden Lektionen bieten umfassende Abdeckung der JavaScript-Mechanismen. Fokussiere dich auf Verständnis statt Auswendiglernen — du wirst viel Praxis bekommen, diese Konzepte in echten Projekten anzuwenden.
 
-Take time to identify gaps in your knowledge early. If async/await confuses you, or if you're unsure how modules work, flag it now. Your mentors can guide you through the tricky parts before they become blockers on actual tasks.
+Nimm dir Zeit, Lücken in deinem Wissen früh zu identifizieren. Wenn async/await dich verwirrt oder du unsicher bist, wie Module funktionieren, markiere es jetzt. Deine Mentor:innen können dich durch die kniffligen Teile führen, bevor sie zu Blockern bei echten Aufgaben werden.

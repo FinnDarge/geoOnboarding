@@ -146,21 +146,20 @@ watch(
     <section class="card dashboard__hero">
       <div>
         <p class="eyebrow">Hi, {{ store.getters['user/name'] || store.state.user.name }} 👋</p>
-        <h1>Welcome to the Onboarding Academy</h1>
+        <h1>Willkommen in der Onboarding Academy</h1>
         <p class="muted">
-          Track your progress across JavaScript, Vue and geo development topics. Complete the core modules, pick a
-          specialization, and keep moving toward your capstone.
+          Verfolge deinen Fortschritt in JavaScript, Vue und Geo-Entwicklungsthemen. Schließe die Grundlagenmodule ab, wähle eine Spezialisierung und arbeite dich zum Abschlussprojekt vor.
         </p>
       </div>
       <div class="dashboard__progress">
-        <ProgressBar label="Overall Progress" :value="overallProgress" />
+        <ProgressBar label="Gesamtfortschritt" :value="overallProgress" />
         <BadgeMiniShowcase />
         <div class="dashboard__actions">
-          <button @click="completeCommonModules" class="debug-btn" title="Debug: Complete all common modules">
-            🚀 Skip to Specialization
+          <button @click="completeCommonModules" class="debug-btn" title="Debug: Alle Grundlagenmodule abschließen">
+            🚀 Springe zur Spezialisierung
           </button>
           <button @click="resetProgress" class="reset-btn" :class="{ 'reset-btn--confirm': showResetConfirm }">
-            {{ showResetConfirm ? 'Click again to confirm' : 'Reset Progress' }}
+            {{ showResetConfirm ? 'Klicke erneut zum Bestätigen' : 'Fortschritt zurücksetzen' }}
           </button>
         </div>
       </div>
@@ -169,14 +168,14 @@ watch(
     <section class="card dashboard__tracks">
       <div class="dashboard__tracks-header">
         <div>
-          <p class="eyebrow">Choose your specializations</p>
-          <h3>Unlock Tracks after Geo Basics</h3>
+          <p class="eyebrow">Wähle deine Spezialisierungen</p>
+          <h3>Schalte Tracks nach Geo-Grundlagen frei</h3>
           <p class="muted">
-            Complete Geo Basics to unlock specialization tracks. You can activate both tracks and work on them in parallel or one after another.
+            Schließe die Geo-Grundlagen ab, um Spezialisierungs-Tracks freizuschalten. Du kannst beide Tracks aktivieren und parallel oder nacheinander bearbeiten.
           </p>
         </div>
         <div class="dashboard__track-status" :class="{ 'dashboard__track-status--ready': trackUnlocked }">
-          {{ trackUnlocked ? 'Tracks unlocked' : 'Complete all core modules to unlock' }}
+          {{ trackUnlocked ? 'Tracks freigeschaltet' : 'Schließe alle Grundlagenmodule ab zum Freischalten' }}
         </div>
       </div>
       <div class="dashboard__track-grid">
@@ -194,16 +193,16 @@ watch(
               <p class="eyebrow">{{ track.title }}</p>
               <h4>{{ track.description }}</h4>
             </div>
-            <span v-if="isTrackEnabled(track.id)" class="track-card__badge">Active</span>
+            <span v-if="isTrackEnabled(track.id)" class="track-card__badge">Aktiv</span>
           </div>
-          <p class="muted">{{ track.modules.length }} modules</p>
+          <p class="muted">{{ track.modules.length }} Module</p>
           <button
             class="track-card__button"
             :class="{ 'track-card__button--active': isTrackEnabled(track.id) }"
             :disabled="!trackUnlocked"
             @click="toggleTrack(track.id)"
           >
-            {{ isTrackEnabled(track.id) ? 'Deactivate' : trackUnlocked ? 'Activate track' : 'Locked' }}
+            {{ isTrackEnabled(track.id) ? 'Deaktivieren' : trackUnlocked ? 'Track aktivieren' : 'Gesperrt' }}
           </button>
         </div>
       </div>
@@ -211,7 +210,7 @@ watch(
 
     <section class="card dashboard__next" v-if="nextLesson">
       <div>
-        <p class="eyebrow">Next recommended lesson</p>
+        <p class="eyebrow">Nächste empfohlene Lektion</p>
         <h3>{{ nextLesson.module.title }}</h3>
         <p class="muted">{{ nextLesson.lesson.title }}</p>
       </div>
@@ -219,7 +218,7 @@ watch(
         class="next-btn"
         :to="{ name: 'module', params: { id: nextLesson.module.id }, query: { lesson: nextLesson.lesson.id } }"
       >
-        Continue →
+        Weiter →
       </RouterLink>
     </section>
 

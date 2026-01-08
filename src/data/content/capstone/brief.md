@@ -1,7 +1,7 @@
-Design a simple municipal dashboard:
+Entwirf ein einfaches kommunales Dashboard:
 
-- Show KPIs (energy usage, bike stations, etc.)
-- Overlay at least two layers in Masterportal
-- Include a minimal test harness with Mocha/Chai
+- Zeige KPIs (Energieverbrauch, Fahrradstationen, etc.)
+- Überlagere mindestens zwei Layer im Masterportal
+- Binde ein minimales Test-Framework mit Mocha/Chai ein
 
-Ship a demo video highlighting your UX decisions.
+Liefere ein Demo-Video, das deine UX-Entscheidungen hervorhebt.

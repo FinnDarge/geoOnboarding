@@ -1,7 +1,7 @@
-Each layer entry defines: service URL, layer id, style and metadata. When onboarding:
+Jeder Layer-Eintrag definiert: Service-URL, Layer-ID, Style und Metadaten. Beim Onboarding:
 
-1. Duplicate a sandbox config
-2. Register a WMS + WFS pair
-3. Validate them in the Masterportal UI
+1. Dupliziere eine Sandbox-Config
+2. Registriere ein WMS + WFS-Paar
+3. Validiere sie in der Masterportal-UI
 
-Document what each config flag accomplishes so future juniors can follow along.
+Dokumentiere, was jedes Config-Flag bewirkt, damit zukünftige Nachwuchskräfte folgen können.

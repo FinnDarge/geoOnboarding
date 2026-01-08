@@ -11,10 +11,10 @@ const userName = computed(() => store.getters['user/name'] || store.state.user.n
   <div class="achievements">
     <section class="card achievements__hero">
       <div>
-        <p class="eyebrow">Your Journey 🏆</p>
-        <h1>Achievements & Badges</h1>
+        <p class="eyebrow">Deine Reise 🏆</p>
+        <h1>Erfolge & Abzeichen</h1>
         <p class="muted">
-          Track your progress and showcase your accomplishments. Each badge represents a milestone in your learning journey through JavaScript, Vue, and geo development.
+          Verfolge deinen Fortschritt und zeige deine Errungenschaften. Jedes Abzeichen repräsentiert einen Meilenstein in deiner Lernreise durch JavaScript, Vue und Geo-Entwicklung.
         </p>
       </div>
     </section>

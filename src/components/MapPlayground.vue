@@ -43,6 +43,9 @@ const initMap = () => {
     })
   });
 
+  // Make map accessible in DevTools console
+  window.map = map;
+
   map.on('singleclick', (event) => {
     featureInfo.value = null;
     if (config.value?.type === 'wfs' && dataLayer) {
@@ -92,7 +95,7 @@ const applyConfig = async () => {
       });
       vectorSource.addFeatures(features);
     } catch (error) {
-      console.error('WFS load error', error);
+      // WFS load error - silently fail
     }
   }
 };
@@ -116,6 +119,7 @@ watch(
 onBeforeUnmount(() => {
   if (map) {
     map.setTarget(undefined);
+    window.map = undefined;
   }
 });
 </script>

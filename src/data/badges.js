@@ -1,8 +1,8 @@
 export const badgeDefinitions = {
   'js-fundamentals': {
     id: 'js-fundamentals',
-    name: 'JavaScript Master',
-    description: 'Completed JavaScript Fundamentals module',
+    name: 'JavaScript-Meister',
+    description: 'Modul JavaScript-Grundlagen abgeschlossen',
     image: '/src/data/img/badges/javascript.png',
     moduleId: 'js-fundamentals',
     type: 'module',
@@ -10,8 +10,8 @@ export const badgeDefinitions = {
   },
   'vue-basics': {
     id: 'vue-basics',
-    name: 'Vue Expert',
-    description: 'Mastered Vue + Vuex Basics',
+    name: 'Vue-Experte',
+    description: 'Vue + Vuex Grundlagen gemeistert',
     image: '/src/data/img/badges/vue.png',
     moduleId: 'vue-basics',
     type: 'module',
@@ -19,8 +19,8 @@ export const badgeDefinitions = {
   },
   'geo-basics': {
     id: 'geo-basics',
-    name: 'Geo Specialist',
-    description: 'Completed Geo Basics - Projections, WMS, WFS',
+    name: 'Geo-Spezialist',
+    description: 'Geo-Grundlagen abgeschlossen - Projektionen, WMS, WFS',
     image: '/src/data/img/badges/geoBasics.png',
     moduleId: 'geo-basics',
     type: 'module',
@@ -28,8 +28,8 @@ export const badgeDefinitions = {
   },
   'masterportal': {
     id: 'masterportal',
-    name: 'Masterportal Expert',
-    description: 'Completed Masterportal Overview',
+    name: 'Masterportal-Experte',
+    description: 'Masterportal-Übersicht abgeschlossen',
     image: '/src/data/img/badges/masterportalOverview.png',
     moduleId: 'masterportal',
     type: 'module',
@@ -37,8 +37,8 @@ export const badgeDefinitions = {
   },
   'testing': {
     id: 'testing',
-    name: 'Testing Guru',
-    description: 'Mastered Testing with Mocha/Chai/Sinon',
+    name: 'Testing-Guru',
+    description: 'Testing mit Mocha/Chai/Sinon gemeistert',
     image: '/src/data/img/badges/testing.png',
     moduleId: 'testing',
     type: 'module',
@@ -46,8 +46,8 @@ export const badgeDefinitions = {
   },
   'capstone': {
     id: 'capstone',
-    name: 'Capstone Champion',
-    description: 'Completed the Capstone Project',
+    name: 'Abschlussprojekt-Champion',
+    description: 'Abschlussprojekt abgeschlossen',
     image: '/src/data/img/badges/capstoneProject.png',
     moduleId: 'capstone',
     type: 'module',
@@ -55,8 +55,8 @@ export const badgeDefinitions = {
   },
   'polar-mapping': {
     id: 'polar-mapping',
-    name: 'Polar Data Expert',
-    description: 'Completed Polar Mapping Essentials',
+    name: 'POLAR Framework Expert',
+    description: 'Completed POLAR Framework Basics',
     image: '/src/data/img/badges/polarBasics.png',
     moduleId: 'polar-mapping',
     type: 'module',
@@ -64,8 +64,8 @@ export const badgeDefinitions = {
   },
   'masterportal-track': {
     id: 'masterportal-track',
-    name: 'Masterportal Master',
-    description: 'Completed the entire Masterportal track',
+    name: 'Masterportal-Meister',
+    description: 'Gesamten Masterportal-Track abgeschlossen',
     image: '/src/data/img/badges/masterportalTrackCompletion.png',
     type: 'track',
     track: 'masterportal',
@@ -73,8 +73,8 @@ export const badgeDefinitions = {
   },
   'polar-track': {
     id: 'polar-track',
-    name: 'Polar Master',
-    description: 'Completed the entire Polar track',
+    name: 'POLAR-Meister',
+    description: 'Gesamten POLAR-Track abgeschlossen',
     image: '/src/data/img/badges/polarTrackCompletion.png',
     type: 'track',
     track: 'polar',

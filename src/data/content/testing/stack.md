@@ -1,7 +1,7 @@
-Our recommended flow:
+Unser empfohlener Flow:
 
-- Mocha orchestrates suites and hooks
-- Chai exposes expressive assertions
-- Sinon mocks timers, network calls and DOM APIs
+- Mocha orchestriert Suites und Hooks
+- Chai bietet ausdrucksstarke Assertions
+- Sinon mockt Timer, Netzwerk-Calls und DOM-APIs
 
-Practice writing one happy-path and one failure-path test for every UI store interaction.
+Übe, für jede UI-Store-Interaktion einen Happy-Path- und einen Failure-Path-Test zu schreiben.

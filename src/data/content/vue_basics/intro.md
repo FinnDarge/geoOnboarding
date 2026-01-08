@@ -1,24 +1,24 @@
-Vue is the framework that powers our user interfaces and Masterportal widgets. It handles everything from rendering dynamic content to managing application state and responding to user interactions. Understanding Vue fundamentals is essential for building and maintaining the components you'll work with daily.
+Vue ist das Framework, das unsere Benutzeroberflächen und Masterportal-Widgets antreibt. Es kümmert sich um alles — vom Rendern dynamischer Inhalte über das Verwalten des Anwendungszustands bis zum Reagieren auf Benutzerinteraktionen. Das Verständnis der Vue-Grundlagen ist essenziell für das Erstellen und Warten der Komponenten, mit denen du täglich arbeiten wirst.
 
-## Why Vue Matters
+## Warum Vue wichtig ist
 
-Vue gives us a declarative, reactive way to build interfaces. Instead of manually updating the DOM whenever data changes, Vue automatically keeps the UI in sync with your application state. This makes our code cleaner, more predictable, and easier to test. In Masterportal, Vue components wrap map interactions, layer controls, and configuration panels.
+Vue gibt uns eine deklarative, reaktive Art, Interfaces zu erstellen. Anstatt das DOM manuell zu aktualisieren, wenn sich Daten ändern, hält Vue die UI automatisch mit dem Anwendungszustand synchron. Das macht unseren Code sauberer, vorhersagbarer und einfacher zu testen. In Masterportal wrappen Vue-Komponenten Karten-Interaktionen, Layer-Controls und Konfigurationspanels.
 
-## What You Need to Know
+## Was du wissen musst
 
-You should be comfortable with:
+Du solltest vertraut sein mit:
 
-- **Single File Components (SFC)** — how `<script setup>`, `<template>`, and `<style>` work together
-- **Reactivity** — using `ref` and `reactive` to create data that triggers UI updates
-- **Component communication** — props for passing data down, emits for sending events up
-- **Lifecycle hooks** — when components mount, update, and unmount
-- **Composables** — extracting and reusing reactive logic across components
-- **Vuex patterns** — how we organize application state in modules
+- **Single File Components (SFC)** — wie `<script setup>`, `<template>` und `<style>` zusammenarbeiten
+- **Reaktivität** — Verwendung von `ref` und `reactive`, um Daten zu erstellen, die UI-Updates auslösen
+- **Komponenten-Kommunikation** — Props zum Weitergeben von Daten nach unten, Emits zum Senden von Events nach oben
+- **Lifecycle Hooks** — wann Komponenten mounten, updaten und unmounten
+- **Composables** — Extrahieren und Wiederverwenden reaktiver Logik über Komponenten hinweg
+- **Vuex Patterns** — wie wir den Anwendungszustand in Modulen organisieren
 
-These concepts appear in every Vue component you'll encounter. Whether you're building a new widget, updating existing functionality, or debugging issues, you'll need to understand how Vue's reactivity system and component model work.
+Diese Konzepte erscheinen in jeder Vue-Komponente, der du begegnen wirst. Egal ob du ein neues Widget baust, bestehende Funktionalität aktualisierst oder Probleme debuggst — du musst verstehen, wie Vues Reaktivitätssystem und Komponentenmodell funktionieren.
 
-## Learning Path
+## Lernpfad
 
-Focus on the core concepts first. The external resources in later lessons provide detailed explanations and interactive examples. Pay special attention to the Composition API (with `<script setup>`) since that's what we use in our codebase, not the older Options API.
+Fokussiere dich zuerst auf die Kernkonzepte. Die externen Ressourcen in späteren Lektionen bieten detaillierte Erklärungen und interaktive Beispiele. Achte besonders auf die Composition API (mit `<script setup>`), da wir diese in unserer Codebasis verwenden, nicht die ältere Options API.
 
-If reactive data, lifecycle hooks, or Vuex modules feel unclear, speak up early. Your mentors can walk you through practical examples from our actual widgets to make these patterns concrete before you start implementing features.
+Wenn reaktive Daten, Lifecycle Hooks oder Vuex-Module unklar sind, sprich früh an. Deine Mentor:innen können dich durch praktische Beispiele aus unseren echten Widgets führen, um diese Muster konkret zu machen, bevor du mit der Implementierung von Features beginnst.

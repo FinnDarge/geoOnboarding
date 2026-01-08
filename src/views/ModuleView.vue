@@ -85,12 +85,12 @@ watch(moduleProgress, (progress) => {
       <LessonRenderer :lesson="selectedLesson" :module-id="moduleData.id" @complete="markCompleted" />
     </section>
     <section v-else class="module-view__content card">
-      <p>Select a lesson to get started.</p>
+      <p>Wähle eine Lektion, um zu starten.</p>
     </section>
   </div>
   <div v-else class="card">
-    <p v-if="lockedModule">This module is part of another track. Switch tracks from the dashboard to access it.</p>
-    <p v-else>Module not found.</p>
+    <p v-if="lockedModule">Dieses Modul ist Teil eines anderen Tracks. Wechsle den Track vom Dashboard aus, um darauf zuzugreifen.</p>
+    <p v-else>Modul nicht gefunden.</p>
   </div>
 </template>
 

@@ -45,6 +45,8 @@ const shouldShowCompleteButton = computed(() => manualCompletionTypes.includes(p
 
 const shouldShowCoordinateTransformer = computed(() => props.lesson.id === 'projections-theory');
 
+const shouldShowProjectionMap = computed(() => props.lesson.id === 'projections-theory');
+
 const triggerCompletion = () => {
   if (!isCompleted.value) {
     emit('complete');
@@ -55,18 +57,19 @@ const triggerCompletion = () => {
 <template>
   <div class="lesson">
     <header class="lesson__header">
-      <p class="eyebrow">Lesson</p>
+      <p class="eyebrow">Lektion</p>
       <h2>{{ lesson.title }}</h2>
     </header>
 
     <div v-if="lesson.type === 'markdown'" class="lesson__body">
       <div v-html="markdownHtml"></div>
       <CoordinateTransformer v-if="shouldShowCoordinateTransformer" />
+      <MapPlayground v-if="shouldShowProjectionMap" config-id="projection_demo" />
     </div>
 
     <div v-else-if="lesson.type === 'external-link'" class="lesson__body">
-      <p class="muted">Review the external resource and take notes in your journal.</p>
-      <a :href="lesson.url" class="primary-btn" target="_blank" rel="noreferrer">Open resource ↗</a>
+      <p class="muted">Schaue dir die externe Ressource an und mache Notizen in deinem Journal.</p>
+      <a :href="lesson.url" class="primary-btn" target="_blank" rel="noreferrer">Ressource öffnen ↗</a>
     </div>
 
     <Quiz
@@ -82,7 +85,7 @@ const triggerCompletion = () => {
     <TaskList v-else-if="lesson.type === 'task-list'" :tasks-id="lesson.tasksId" @completed="triggerCompletion" />
 
     <div v-else class="lesson__body">
-      <p>Lesson type not supported yet.</p>
+      <p>Lektionstyp noch nicht unterstützt.</p>
     </div>
 
     <button 
@@ -92,7 +95,7 @@ const triggerCompletion = () => {
       @click="triggerCompletion"
       :disabled="isCompleted"
     >
-      {{ isCompleted ? '✓ Completed' : 'Mark as completed' }}
+      {{ isCompleted ? '✓ Abgeschlossen' : 'Als abgeschlossen markieren' }}
     </button>
   </div>
 </template>

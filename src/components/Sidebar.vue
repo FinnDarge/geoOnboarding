@@ -14,7 +14,7 @@ const navItems = computed(() => [
     to: { name: 'module', params: { id: module.id } },
     icon: module.icon
   })),
-  { label: 'Achievements', to: { name: 'achievements' }, icon: '🏆' },
+  { label: 'Erfolge', to: { name: 'achievements' }, icon: '🏆' },
   { label: 'Team', to: { name: 'team' }, icon: '👥' }
 ]);
 

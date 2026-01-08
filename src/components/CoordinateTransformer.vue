@@ -12,19 +12,25 @@ const projectionSystems = [
   {
     id: 'epsg25832',
     label: 'EPSG:25832 (UTM 32N)',
-    description: 'Projected coordinates in meters',
+    description: 'Projizierte Koordinaten in Metern',
     code: 'EPSG:25832'
+  },
+  {
+    id: 'epsg3857',
+    label: 'EPSG:3857 (Web Mercator)',
+    description: 'Standard-Projektion für Web-Mapping (OpenLayers, Google Maps)',
+    code: 'EPSG:3857'
   },
   {
     id: 'wgs84-decimal',
     label: 'WGS84 Decimal',
-    description: 'Longitude, Latitude in decimal degrees',
+    description: 'Längengrad, Breitengrad in Dezimalgrad',
     code: 'EPSG:4326'
   },
   {
     id: 'wgs84-latlon',
     label: 'WGS84 Lat/Lon',
-    description: 'Latitude, Longitude (traditional order)',
+    description: 'Breitengrad, Längengrad (traditionelle Reihenfolge)',
     code: 'EPSG:4326'
   }
 ];
@@ -62,6 +68,15 @@ const transformedCoordinates = computed(() => {
         format: 'Easting, Northing'
       };
     
+    case 'epsg3857': {
+      const webMercator = transform(sourceCoords, 'EPSG:25832', 'EPSG:3857');
+      return {
+        display: `${webMercator[0].toFixed(2)}, ${webMercator[1].toFixed(2)}`,
+        unit: 'm',
+        format: 'X, Y'
+      };
+    }
+    
     case 'wgs84-decimal': {
       const wgs84 = transform(sourceCoords, 'EPSG:25832', 'EPSG:4326');
       return {
@@ -90,9 +105,11 @@ const transformedCoordinates = computed(() => {
 const allProjectionValues = computed(() => {
   const sourceCoords = selectedLocation.value.epsg25832;
   const wgs84 = transform(sourceCoords, 'EPSG:25832', 'EPSG:4326');
+  const webMercator = transform(sourceCoords, 'EPSG:25832', 'EPSG:3857');
   
   return {
     epsg25832: `${sourceCoords[0].toFixed(0)}, ${sourceCoords[1].toFixed(0)} m`,
+    epsg3857: `${webMercator[0].toFixed(2)}, ${webMercator[1].toFixed(2)} m`,
     wgs84Decimal: `${wgs84[0].toFixed(6)}°, ${wgs84[1].toFixed(6)}°`,
     wgs84LatLon: `${Math.abs(wgs84[1]).toFixed(6)}°${wgs84[1] >= 0 ? 'N' : 'S'}, ${Math.abs(wgs84[0]).toFixed(6)}°${wgs84[0] >= 0 ? 'E' : 'W'}`
   };
@@ -105,12 +122,12 @@ const currentSystem = computed(() => {
 
 <template>
   <div class="coordinate-transformer">
-    <h3>Interactive Coordinate Transformer</h3>
-    <p class="muted">Select a location and projection system to see how coordinates are represented.</p>
+    <h3>Interaktiver Koordinaten-Transformer</h3>
+    <p class="muted">Wähle einen Ort und ein Projektionssystem aus, um zu sehen, wie Koordinaten dargestellt werden.</p>
     
     <div class="transformer__controls">
       <div class="control-group">
-        <label class="control-label">Location</label>
+        <label class="control-label">Ort</label>
         <select v-model="selectedLocation" class="transformer__select">
           <option v-for="location in exampleLocations" :key="location.name" :value="location">
             {{ location.name }}
@@ -119,7 +136,7 @@ const currentSystem = computed(() => {
       </div>
       
       <div class="control-group">
-        <label class="control-label">Coordinate System</label>
+        <label class="control-label">Koordinatensystem</label>
         <select v-model="selectedProjection" class="transformer__select">
           <option v-for="system in projectionSystems" :key="system.id" :value="system.id">
             {{ system.label }}
@@ -140,11 +157,15 @@ const currentSystem = computed(() => {
     </div>
     
     <div class="transformer__all-systems">
-      <p class="eyebrow">All coordinate systems for {{ selectedLocation.name }}</p>
+      <p class="eyebrow">Alle Koordinatensysteme für {{ selectedLocation.name }}</p>
       <div class="all-systems__grid">
         <div class="system-card">
           <div class="system-card__label">EPSG:25832</div>
           <div class="system-card__value">{{ allProjectionValues.epsg25832 }}</div>
+        </div>
+        <div class="system-card">
+          <div class="system-card__label">EPSG:3857</div>
+          <div class="system-card__value">{{ allProjectionValues.epsg3857 }}</div>
         </div>
         <div class="system-card">
           <div class="system-card__label">WGS84 Decimal</div>

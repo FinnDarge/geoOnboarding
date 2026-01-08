@@ -121,15 +121,15 @@ const retryFailedQuestions = () => {
         </label>
       </div>
       <button class="primary-btn" type="submit" :disabled="submitted || !canSubmit">
-        {{ submitted ? 'Quiz completed' : 'Submit quiz' }}
+        {{ submitted ? 'Quiz abgeschlossen' : 'Quiz absenden' }}
       </button>
-      <p v-if="!canSubmit && !submitted" class="quiz__warning">Please answer all questions before submitting.</p>
+      <p v-if="!canSubmit && !submitted" class="quiz__warning">Bitte beantworte alle Fragen, bevor du das Quiz absendest.</p>
     </form>
     <div v-if="submitted" class="quiz__results">
-      <p class="quiz__result">Score: {{ score }}%</p>
-      <p v-if="score >= 70" class="quiz__result quiz__result--success">Great job! Lesson marked as complete.</p>
-      <p v-else class="quiz__result quiz__result--warning">You need at least 70% to pass. Try again on the failed questions!</p>
-      <button v-if="score < 70" @click="retryFailedQuestions" class="ghost-btn">Retry failed questions</button>
+      <p class="quiz__result">Punktzahl: {{ score }}%</p>
+      <p v-if="score >= 70" class="quiz__result quiz__result--success">Gut gemacht! Lektion als abgeschlossen markiert.</p>
+      <p v-else class="quiz__result quiz__result--warning">Du benötigst mindestens 70% zum Bestehen. Versuche die fehlgeschlagenen Fragen erneut!</p>
+      <button v-if="score < 70" @click="retryFailedQuestions" class="ghost-btn">Fehlgeschlagene Fragen wiederholen</button>
     </div>
   </div>
 </template>

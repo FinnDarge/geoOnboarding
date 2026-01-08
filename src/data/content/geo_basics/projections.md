@@ -1,22 +1,22 @@
-## Common Projection Systems in Masterportal
+## Gängige Projektionssysteme im Masterportal
 
-When working with geographic data in Masterportal, you'll encounter these coordinate reference systems regularly:
+Bei der Arbeit mit geografischen Daten im Masterportal wirst du regelmäßig auf diese Koordinatenreferenzsysteme stoßen:
 
-### EPSG:25832 (ETRS89 / UTM zone 32N)
-A projected coordinate system commonly used for German geographic data. Coordinates are measured in meters (Easting, Northing). Hamburg's city center is approximately at `569000, 5935000`.
+### EPSG:25832 (ETRS89 / UTM Zone 32N)
+Ein projiziertes Koordinatensystem, das häufig für deutsche geografische Daten verwendet wird. Koordinaten werden in Metern gemessen (Rechtswert, Hochwert). Das Hamburger Stadtzentrum liegt ungefähr bei `569000, 5935000`.
 
 ### WGS84 Decimal (EPSG:4326)
-The standard GPS coordinate system using decimal degrees. Coordinates range from -180 to 180 for longitude and -90 to 90 for latitude. Displayed as `longitude, latitude` (e.g., `9.993, 53.551`).
+Das Standard-GPS-Koordinatensystem mit Dezimalgraden. Koordinaten reichen von -180 bis 180 für Längengrad und -90 bis 90 für Breitengrad. Angezeigt als `Längengrad, Breitengrad` (z.B. `9.993, 53.551`).
 
 ### WGS84 Lat/Lon
-The same EPSG:4326 system but with coordinates displayed in the traditional `latitude, longitude` order (e.g., `53.551°N, 9.993°E`).
+Dasselbe EPSG:4326-System, aber mit Koordinaten in der traditionellen `Breitengrad, Längengrad`-Reihenfolge angezeigt (z.B. `53.551°N, 9.993°E`).
 
-## Working with Projections
+## Arbeiten mit Projektionen
 
-OpenLayers defaults to EPSG:3857 but many of our datasets live in EPSG:25832. When working on Masterportal, always:
+OpenLayers verwendet standardmäßig EPSG:3857, aber viele unserer Datensätze liegen in EPSG:25832 vor. Bei der Arbeit mit dem Masterportal solltest du immer:
 
-- Confirm the dataset CRS and reproject when necessary
-- Lean on `ol/proj` helpers for conversions
-- Document assumptions in pull requests
+- Das CRS des Datensatzes bestätigen und bei Bedarf reprojizieren
+- Die `ol/proj`-Helfer für Konvertierungen nutzen
+- Annahmen in Pull Requests dokumentieren
 
-Try the interactive coordinate transformer below to see how the same location is represented in different coordinate systems. Then pan the playground map and inspect the view coordinates via the devtools console using `map.getView().getCenter()`.
+Probiere den interaktiven Koordinaten-Transformer unten aus, um zu sehen, wie derselbe Ort in verschiedenen Koordinatensystemen dargestellt wird. Dann schwenke die Playground-Karte und inspiziere die View-Koordinaten (EPSG:3857) über die DevTools-Console mit `map.getView().getCenter()`.
