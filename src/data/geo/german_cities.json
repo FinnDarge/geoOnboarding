@@ -1,0 +1,155 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [13.405, 52.52] },
+      "properties": { "NAME": "Berlin", "Population": 3769495, "Country": "Germany", "State": "Berlin" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [9.993, 53.551] },
+      "properties": { "NAME": "Hamburg", "Population": 1899160, "Country": "Germany", "State": "Hamburg" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [11.582, 48.135] },
+      "properties": { "NAME": "München", "Population": 1471508, "Country": "Germany", "State": "Bayern" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [6.961, 50.938] },
+      "properties": { "NAME": "Köln", "Population": 1085664, "Country": "Germany", "State": "Nordrhein-Westfalen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [8.682, 50.110] },
+      "properties": { "NAME": "Frankfurt am Main", "Population": 753056, "Country": "Germany", "State": "Hessen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [9.182, 48.775] },
+      "properties": { "NAME": "Stuttgart", "Population": 634830, "Country": "Germany", "State": "Baden-Württemberg" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [6.784, 51.227] },
+      "properties": { "NAME": "Düsseldorf", "Population": 619294, "Country": "Germany", "State": "Nordrhein-Westfalen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [7.009, 51.455] },
+      "properties": { "NAME": "Essen", "Population": 582760, "Country": "Germany", "State": "Nordrhein-Westfalen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [7.217, 51.478] },
+      "properties": { "NAME": "Dortmund", "Population": 586181, "Country": "Germany", "State": "Nordrhein-Westfalen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [10.002, 53.541] },
+      "properties": { "NAME": "Hamburg-Altona", "Population": 270263, "Country": "Germany", "State": "Hamburg" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [13.738, 51.050] },
+      "properties": { "NAME": "Dresden", "Population": 556780, "Country": "Germany", "State": "Sachsen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [12.387, 51.340] },
+      "properties": { "NAME": "Leipzig", "Population": 593145, "Country": "Germany", "State": "Sachsen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [8.806, 53.080] },
+      "properties": { "NAME": "Bremen", "Population": 567559, "Country": "Germany", "State": "Bremen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [9.732, 52.375] },
+      "properties": { "NAME": "Hannover", "Population": 535932, "Country": "Germany", "State": "Niedersachsen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [11.079, 49.453] },
+      "properties": { "NAME": "Nürnberg", "Population": 518365, "Country": "Germany", "State": "Bayern" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [6.950, 50.937] },
+      "properties": { "NAME": "Leverkusen", "Population": 163729, "Country": "Germany", "State": "Nordrhein-Westfalen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [7.461, 51.514] },
+      "properties": { "NAME": "Bochum", "Population": 365587, "Country": "Germany", "State": "Nordrhein-Westfalen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [7.628, 51.956] },
+      "properties": { "NAME": "Münster", "Population": 314319, "Country": "Germany", "State": "Nordrhein-Westfalen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [9.960, 49.799] },
+      "properties": { "NAME": "Würzburg", "Population": 127934, "Country": "Germany", "State": "Bayern" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [11.627, 50.979] },
+      "properties": { "NAME": "Erfurt", "Population": 213981, "Country": "Germany", "State": "Thüringen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [8.404, 49.007] },
+      "properties": { "NAME": "Karlsruhe", "Population": 312060, "Country": "Germany", "State": "Baden-Württemberg" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [9.194, 49.144] },
+      "properties": { "NAME": "Heilbronn", "Population": 126592, "Country": "Germany", "State": "Baden-Württemberg" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [10.897, 48.365] },
+      "properties": { "NAME": "Augsburg", "Population": 295135, "Country": "Germany", "State": "Bayern" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [7.852, 47.995] },
+      "properties": { "NAME": "Freiburg im Breisgau", "Population": 230241, "Country": "Germany", "State": "Baden-Württemberg" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [8.247, 50.078] },
+      "properties": { "NAME": "Wiesbaden", "Population": 278342, "Country": "Germany", "State": "Hessen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [8.048, 52.280] },
+      "properties": { "NAME": "Osnabrück", "Population": 165034, "Country": "Germany", "State": "Niedersachsen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [13.062, 52.399] },
+      "properties": { "NAME": "Potsdam", "Population": 180334, "Country": "Germany", "State": "Brandenburg" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [8.539, 52.027] },
+      "properties": { "NAME": "Bielefeld", "Population": 333786, "Country": "Germany", "State": "Nordrhein-Westfalen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [7.099, 50.734] },
+      "properties": { "NAME": "Bonn", "Population": 329673, "Country": "Germany", "State": "Nordrhein-Westfalen" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [9.877, 54.323] },
+      "properties": { "NAME": "Kiel", "Population": 247548, "Country": "Germany", "State": "Schleswig-Holstein" }
+    }
+  ]
+}

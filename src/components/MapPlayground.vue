@@ -237,7 +237,7 @@ onBeforeUnmount(() => {
   <div v-if="config" class="map-playground">
     <div class="map-playground__info">
       <p class="muted">{{ config.description }}</p>
-      <button class="ghost-btn" @click="toggleLayer">{{ layerVisible ? 'Hide' : 'Show' }} layer</button>
+      <button v-if="config.type === 'wms' || config.type === 'wfs'" class="ghost-btn" @click="toggleLayer">{{ layerVisible ? 'Hide' : 'Show' }} layer</button>
     </div>
     <div ref="mapTarget" class="map-container"></div>
     <div v-if="featureInfo" class="feature-info">

@@ -14,16 +14,9 @@
     "zoom": 12
   },
   "projection_demo": {
-    "type": "wms",
-    "title": "WMS Playground",
+    "type": "osm",
+    "title": "Projektions-Playground",
     "description": "Interaktive Karte zum Erkunden von Projektionen. Nutze map.getView().getCenter() in der DevTools-Console.",
-    "url": "https://sgx.geodatenzentrum.de/wms_sentinel2_de",
-    "params": {
-      "LAYERS": "rgb",
-      "FORMAT": "image/png",
-      "VERSION": "1.3.0",
-      "TRANSPARENT": false
-    },
     "center": [9.993, 53.551],
     "zoom": 12
   }
