@@ -1,6 +1,8 @@
 # Vuex State Management Patterns
 
-Vuex ist die zentrale State-Management-Lösung für Vue-Anwendungen. Es bietet einen Single Source of Truth für den gesamten Anwendungszustand und ermöglicht vorhersagbare State-Änderungen durch ein strukturiertes Pattern.
+Vuex ist die zentrale State-Management-Lösung für Vue-Anwendungen. Es bietet einen **Single Source of Truth** für den gesamten Anwendungszustand und ermöglicht vorhersagbare State-Änderungen durch ein strukturiertes Pattern.
+
+---
 
 ## Grundlegende Konzepte
 
@@ -35,7 +37,7 @@ const mutations = {
 }
 ```
 
-**Wichtig:** Mutations erhalten immer `state` als ersten Parameter und optional einen `payload` als zweiten.
+> **Wichtig:** Mutations erhalten immer `state` als ersten Parameter und optional einen `payload` als zweiten.
 
 ### Actions
 Actions enthalten **asynchrone** Logik (API-Calls, Timeouts) und committen Mutations.
@@ -73,6 +75,8 @@ const getters = {
   greeting: (state, getters) => `Hallo, ${getters.fullName}!`
 }
 ```
+
+---
 
 ## Module mit Namespaces
 
@@ -131,6 +135,8 @@ export default {
 }
 ```
 
+---
+
 ## Verwendung in Komponenten
 
 ### State & Getters abrufen
@@ -183,7 +189,9 @@ store.dispatch('progress/syncProgress')
   .catch(err => console.error(err))
 ```
 
-## Best Practices für unser Team
+---
+
+## ✅ Best Practices für unser Team
 
 ### 1. Modulstruktur spiegelt Backend-Konzepte
 Organisiere Module analog zu Backend-Entities:
@@ -251,7 +259,9 @@ commit('updateLesson', {
 })
 ```
 
-## Use Cases aus dieser Academy
+---
+
+## 💼 Use Cases aus dieser Academy
 
 ### Use Case 1: Lesson Completion
 ```javascript
@@ -302,7 +312,9 @@ getters: {
 }
 ```
 
-## Debugging-Tipps
+---
+
+## 🔍 Debugging-Tipps
 
 ### Vue DevTools
 Nutze die Vue DevTools Browser-Extension:
@@ -328,9 +340,11 @@ export default createStore({
 })
 ```
 
-Im Strict Mode wirft Vuex einen Error, wenn State außerhalb von Mutations geändert wird.
+> **Hinweis:** Im Strict Mode wirft Vuex einen Error, wenn State außerhalb von Mutations geändert wird. Dies hilft dir, unbeabsichtigte State-Änderungen zu vermeiden.
 
-## Zusammenfassung
+---
+
+## 📝 Zusammenfassung
 
 ✅ **State** = Single Source of Truth
 ✅ **Mutations** = Synchrone State-Änderungen

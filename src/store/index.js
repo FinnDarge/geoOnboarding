@@ -8,7 +8,6 @@ const persisted = (() => {
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
   } catch (error) {
-    console.warn('Failed to parse persisted state', error);
     return {};
   }
 })();
@@ -16,15 +15,20 @@ const persisted = (() => {
 const user = {
   namespaced: true,
   state: () => ({
-    name: persisted.user?.name || 'Nachwuchskraft'
+    name: persisted.user?.name || 'Nachwuchskraft',
+    hasSeenIntro: persisted.user?.hasSeenIntro || false
   }),
   mutations: {
     setName(state, name) {
       state.name = name;
+    },
+    markIntroSeen(state) {
+      state.hasSeenIntro = true;
     }
   },
   getters: {
-    name: (state) => state.name
+    name: (state) => state.name,
+    hasSeenIntro: (state) => state.hasSeenIntro
   }
 };
 

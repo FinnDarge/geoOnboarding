@@ -2,8 +2,8 @@
   "wfs_basic": {
     "type": "wfs",
     "title": "WFS: Deutsche Städte",
-    "description": "Web Feature Service mit Vektordaten. Zeigt 30 große Städte in Deutschland. Klicke auf Features für Details.",
-    "url": "/src/data/geo/german_cities.json",
+    "description": "Web Feature Service mit Vektordaten. Zeigt Städte in Deutschland aus Natural Earth Daten. Klicke auf Features für Details.",
+    "url": "https://ahocevar.com/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=ne:ne_10m_populated_places&outputFormat=application/json&bbox=5.5,47.0,15.5,55.5,EPSG:4326&maxFeatures=100",
     "center": [10.5, 51.0],
     "zoom": 6
   }

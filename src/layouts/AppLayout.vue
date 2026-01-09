@@ -2,6 +2,10 @@
 import Sidebar from '../components/Sidebar.vue';
 import TopBar from '../components/TopBar.vue';
 import BadgeUnlockModal from '../components/BadgeUnlockModal.vue';
+import IntroductionModal from '../components/IntroductionModal.vue';
+import { ref, computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
+import { useRoute } from 'vue-router';
 
 const props = defineProps({
   title: {
@@ -13,18 +17,43 @@ const props = defineProps({
     default: 'Nachwuchskraft'
   }
 });
+
+const store = useStore();
+const route = useRoute();
+const showIntroModal = ref(false);
+
+const hasSeenIntro = computed(() => store.getters['user/hasSeenIntro']);
+
+onMounted(() => {
+  // Show intro modal on dashboard if user hasn't seen it
+  if (!hasSeenIntro.value && route.name === 'dashboard') {
+    // Small delay for better UX
+    setTimeout(() => {
+      showIntroModal.value = true;
+    }, 500);
+  }
+});
+
+const openIntroModal = () => {
+  showIntroModal.value = true;
+};
+
+const closeIntroModal = () => {
+  showIntroModal.value = false;
+};
 </script>
 
 <template>
   <div class="layout">
     <Sidebar class="layout__sidebar" />
     <div class="layout__main">
-      <TopBar :title="props.title" :user-name="props.userName" />
+      <TopBar :title="props.title" :user-name="props.userName" @open-tutorial="openIntroModal" />
       <main class="layout__content">
         <slot />
       </main>
     </div>
     <BadgeUnlockModal />
+    <IntroductionModal v-if="showIntroModal" @close="closeIntroModal" />
   </div>
 </template>
 

@@ -14,6 +14,8 @@ const props = defineProps({
   }
 });
 
+const emit = defineEmits(['open-tutorial']);
+
 const store = useStore();
 
 const earnedCount = computed(() => store.getters['badges/earnedBadges'].length);
@@ -24,12 +26,19 @@ const hasUnviewed = computed(() => unviewedCount.value > 0);
 const navigateToAchievements = () => {
   window.location.href = '/achievements';
 };
+
+const openTutorial = () => {
+  emit('open-tutorial');
+};
 </script>
 
 <template>
   <header class="topbar">
     <div class="topbar__title">{{ props.title }}</div>
     <div class="topbar__actions">
+      <button class="tutorial-btn" @click="openTutorial" title="Tutorial anzeigen">
+        <span class="tutorial-btn__icon">❓</span>
+      </button>
       <button class="badge-indicator" @click="navigateToAchievements" :class="{ 'badge-indicator--unviewed': hasUnviewed }">
         <span class="badge-indicator__icon">🏆</span>
         <span class="badge-indicator__count">{{ earnedCount }}/{{ totalBadges }}</span>
@@ -142,5 +151,31 @@ const navigateToAchievements = () => {
   display: grid;
   place-items: center;
   font-weight: 700;
+}
+
+.tutorial-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tutorial-btn:hover {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: scale(1.1);
+}
+
+.tutorial-btn__icon {
+  font-size: 18px;
+  line-height: 1;
 }
 </style>

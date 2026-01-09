@@ -89,21 +89,14 @@ watch(
   () => {
     // Check ALL modules from ALL tracks (common, masterportal, polar)
     const allModules = getAllModules();
-    console.log('[BADGE DEBUG] All modules:', allModules.map(m => m.id));
     return allModules.map(m => ({ id: m.id, progress: moduleProgress(m.id) }));
   },
   (modules) => {
-    console.log('[BADGE DEBUG] Module progress check:', modules);
     modules.forEach(({ id, progress }) => {
-      console.log(`[BADGE DEBUG] Module ${id}: ${progress}%`);
       if (progress === 100) {
         const badge = getBadgeForModule(id);
-        console.log(`[BADGE DEBUG] Module ${id} complete! Badge:`, badge);
         if (badge && !store.getters['badges/hasBadge'](badge.id)) {
-          console.log(`[BADGE DEBUG] Earning badge: ${badge.id}`);
           store.commit('badges/earnBadge', badge.id);
-        } else if (badge) {
-          console.log(`[BADGE DEBUG] Badge ${badge.id} already earned`);
         }
       }
     });
@@ -116,23 +109,12 @@ watch(
   () => getAllModules().map(m => moduleProgress(m.id)),
   () => {
     // Check both masterportal and polar tracks
-    console.log('[TRACK BADGE DEBUG] Checking track completion...');
     ['masterportal', 'polar'].forEach(track => {
       const trackBadge = badgeDefinitions[`${track}-track`];
-      console.log(`[TRACK BADGE DEBUG] Track: ${track}, Badge:`, trackBadge);
       if (trackBadge && trackBadge.requiredModules) {
-        const moduleStatuses = trackBadge.requiredModules.map(moduleId => ({
-          id: moduleId,
-          progress: moduleProgress(moduleId)
-        }));
-        console.log(`[TRACK BADGE DEBUG] ${track} required modules:`, moduleStatuses);
         const allComplete = trackBadge.requiredModules.every(moduleId => moduleProgress(moduleId) === 100);
-        console.log(`[TRACK BADGE DEBUG] ${track} all complete:`, allComplete);
         if (allComplete && !store.getters['badges/hasBadge'](trackBadge.id)) {
-          console.log(`[TRACK BADGE DEBUG] Earning track badge: ${trackBadge.id}`);
           store.commit('badges/earnBadge', trackBadge.id);
-        } else if (allComplete) {
-          console.log(`[TRACK BADGE DEBUG] Track badge ${trackBadge.id} already earned`);
         }
       }
     });

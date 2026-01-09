@@ -43,15 +43,10 @@ const markCompleted = () => {
 
 // Badge awarding on module completion
 watch(moduleProgress, (progress) => {
-  console.log(`[MODULE VIEW BADGE DEBUG] Module ${route.params.id} progress: ${progress}%`);
   if (progress === 100) {
     const badge = getBadgeForModule(route.params.id);
-    console.log(`[MODULE VIEW BADGE DEBUG] Module ${route.params.id} complete! Badge:`, badge);
     if (badge && !store.getters['badges/hasBadge'](badge.id)) {
-      console.log(`[MODULE VIEW BADGE DEBUG] Earning badge: ${badge.id}`);
       store.commit('badges/earnBadge', badge.id);
-    } else if (badge) {
-      console.log(`[MODULE VIEW BADGE DEBUG] Badge ${badge.id} already earned`);
     }
   }
 });

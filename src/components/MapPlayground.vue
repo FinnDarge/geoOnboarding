@@ -204,7 +204,7 @@ const applyConfig = async () => {
         map.getView().fit(extent, { padding: [50, 50, 50, 50], duration: 500 });
       }
     } catch (error) {
-      console.error('WFS load error:', error);
+      // WFS loading failed
     }
   }
 };

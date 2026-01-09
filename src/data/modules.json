@@ -79,6 +79,12 @@
               "content": "geo_basics/projections.md"
             },
             {
+              "id": "wms-vs-wfs",
+              "title": "WMS vs WFS",
+              "type": "markdown",
+              "content": "geo_basics/wms_vs_wfs.md"
+            },
+            {
               "id": "wms-playground",
               "title": "WMS Playground",
               "type": "geo-playground",
