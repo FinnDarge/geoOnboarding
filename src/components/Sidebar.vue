@@ -15,7 +15,8 @@ const navItems = computed(() => [
     icon: module.icon
   })),
   { label: 'Erfolge', to: { name: 'achievements' }, icon: '🏆' },
-  { label: 'Team', to: { name: 'team' }, icon: '👥' }
+  { label: 'Team', to: { name: 'team' }, icon: '👥' },
+  { label: 'FAQ', to: { name: 'faq' }, icon: '❓' }
 ]);
 
 const isActive = (to) => {
@@ -28,6 +29,9 @@ const isActive = (to) => {
   }
   if (to.name === 'achievements') {
     return route.name === 'achievements';
+  }
+  if (to.name === 'faq') {
+    return route.name === 'faq';
   }
   return route.params.id === to.params?.id;
 };

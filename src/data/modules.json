@@ -125,10 +125,46 @@
               "content": "masterportal/overview.md"
             },
             {
-              "id": "config",
-              "title": "Layer konfigurieren",
+              "id": "installation",
+              "title": "Installation & Setup",
+              "type": "markdown",
+              "content": "masterportal/installation.md"
+            },
+            {
+              "id": "config-structure",
+              "title": "Konfigurationsstruktur",
+              "type": "markdown",
+              "content": "masterportal/config_structure.md"
+            },
+            {
+              "id": "portal-setup",
+              "title": "Ein Portal aufsetzen",
+              "type": "markdown",
+              "content": "masterportal/portal_setup.md"
+            },
+            {
+              "id": "config-practice",
+              "title": "Praktische Übung: Config anpassen",
               "type": "markdown",
               "content": "masterportal/config.md"
+            },
+            {
+              "id": "architecture",
+              "title": "Architektur verstehen",
+              "type": "markdown",
+              "content": "masterportal/architecture.md"
+            },
+            {
+              "id": "tool-development",
+              "title": "Tool-Entwicklung",
+              "type": "markdown",
+              "content": "masterportal/tool_development.md"
+            },
+            {
+              "id": "masterportal-docs",
+              "title": "Offizielle Dokumentation",
+              "type": "external-link",
+              "url": "https://www.masterportal.org/dokumentation/dokumentation"
             }
           ]
         },

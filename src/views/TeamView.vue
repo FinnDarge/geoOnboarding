@@ -17,6 +17,45 @@ const teamMembers = [
   { name: 'Dennis Sen', role: 'Entwickler', initials: 'DS', image: '/src/data/img/sen.png', email: 'dennis.sen@dataport.de' }
 ];
 
+const meetings = [
+  {
+    title: 'Daily',
+    icon: '💬',
+    frequency: 'Täglich',
+    time: '11:30 - 12:00 Uhr',
+    description: 'Täglicher Austausch in unserer Gruppe per Skype, jeder berichtet woran er gerade arbeitet oder es wird Smalltalk (privat) gehalten.',
+    location: 'Skype',
+    color: 'blue'
+  },
+  {
+    title: 'Extended Daily',
+    icon: '📋',
+    frequency: 'Wöchentlich (im Wechsel)',
+    time: '10:00 - 11:00 Uhr',
+    description: 'Längerer Daily per Skype bei dem die laufenden Projekte tiefergehend besprochen werden und Christian organisatorische Themen aus Führungsrunden behandelt oder wir Teamevents etc. planen. Findet im Wechsel mit dem Bi-Weekly statt.',
+    location: 'Skype',
+    color: 'purple'
+  },
+  {
+    title: 'Bi-Weekly',
+    icon: '🏢',
+    frequency: 'Wöchentlich (im Wechsel)',
+    time: '10:00 - 12:00 Uhr',
+    description: 'Das gleiche wie Extended Daily aber vor Ort meist in Flintbek oder alternativ in Altenholz. Findet im Wechsel mit dem Extended Daily statt.',
+    location: 'Flintbek / Altenholz',
+    color: 'green'
+  },
+  {
+    title: 'Geo JourFixe',
+    icon: '🌍',
+    frequency: 'Donnerstags',
+    time: '10:00 - 11:00 Uhr',
+    description: 'Austausch mit unseren Kollegen bei DA um über laufende oder neue Projekte zu sprechen.',
+    location: 'Skype',
+    color: 'orange'
+  }
+];
+
 const hoveredCard = ref(null);
 const copiedEmail = ref(null);
 
@@ -77,6 +116,51 @@ const copyEmail = async (email) => {
             </svg>
             <span class="email-text">{{ copiedEmail === member.email ? 'Kopiert!' : member.email }}</span>
           </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card meetings-section">
+      <div class="meetings-header">
+        <p class="eyebrow">Wichtige Termine 📅</p>
+        <h2>Team-Meetings & Austausch</h2>
+        <p class="muted">
+          Unsere regelmäßigen Meetings halten dich auf dem Laufenden und bieten Raum für Austausch und Zusammenarbeit.
+        </p>
+      </div>
+
+      <div class="meetings-grid">
+        <div 
+          v-for="(meeting, index) in meetings" 
+          :key="meeting.title"
+          class="meeting-card"
+          :class="`meeting-card--${meeting.color}`"
+          :style="{ animationDelay: `${index * 0.1}s` }"
+        >
+          <div class="meeting-card__header">
+            <div class="meeting-card__icon">{{ meeting.icon }}</div>
+            <div class="meeting-card__title-group">
+              <h3 class="meeting-card__title">{{ meeting.title }}</h3>
+              <span class="meeting-card__frequency">{{ meeting.frequency }}</span>
+            </div>
+          </div>
+          <p class="meeting-card__description">{{ meeting.description }}</p>
+          <div class="meeting-card__footer">
+            <span v-if="meeting.time" class="meeting-card__time">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              {{ meeting.time }}
+            </span>
+            <span class="meeting-card__location">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              {{ meeting.location }}
+            </span>
+          </div>
         </div>
       </div>
     </section>
@@ -281,6 +365,170 @@ const copyEmail = async (email) => {
     opacity: 1;
     transform: translateY(0);
     max-height: 30px;
+  }
+}
+
+/* Meetings Section */
+.meetings-section {
+  margin-bottom: 24px;
+}
+
+.meetings-header {
+  margin-bottom: 28px;
+}
+
+.meetings-header h2 {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.meetings-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.meeting-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideInUp 0.5s ease-out backwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.meeting-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--meeting-color);
+  transition: width 0.3s ease;
+}
+
+.meeting-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--meeting-color);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.meeting-card:hover::before {
+  width: 100%;
+  opacity: 0.1;
+}
+
+.meeting-card--blue {
+  --meeting-color: #3b82f6;
+}
+
+.meeting-card--purple {
+  --meeting-color: #a855f7;
+}
+
+.meeting-card--green {
+  --meeting-color: var(--color-accent);
+}
+
+.meeting-card--orange {
+  --meeting-color: #f59e0b;
+}
+
+.meeting-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.meeting-card__icon {
+  font-size: 32px;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.meeting-card:hover .meeting-card__icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.meeting-card__title-group {
+  flex: 1;
+}
+
+.meeting-card__title {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.meeting-card__frequency {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--meeting-color);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.meeting-card__description {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.meeting-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  flex-wrap: wrap;
+}
+
+.meeting-card__time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.meeting-card__time svg {
+  opacity: 0.7;
+}
+
+.meeting-card__location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.meeting-card__location svg {
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .meetings-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>

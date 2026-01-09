@@ -1,5 +1,66 @@
 [
-  { "id": "ideation", "text": "Definiere das Problem, das deine Abschluss-App löst." },
-  { "id": "wireframe", "text": "Erstelle ein klickbares Wireframe in Figma." },
-  { "id": "prototype", "text": "Baue einen Vue + Masterportal Prototyp." }
+  { 
+    "id": "setup", 
+    "text": "Tool-Ordner erstellen, in tools.js registrieren, in config.json aktivieren" 
+  },
+  { 
+    "id": "model-structure", 
+    "text": "Model-Grundstruktur mit defaults, initialize, startTool, stopTool implementieren" 
+  },
+  { 
+    "id": "map-click", 
+    "text": "Map-Click-Listener registrieren und Features unter Mauszeiger erkennen" 
+  },
+  { 
+    "id": "feature-selection", 
+    "text": "Feature-Selektion implementieren (max. 2 Features speichern)" 
+  },
+  { 
+    "id": "distance-calc", 
+    "text": "Distanz-Berechnung mit OpenLayers getDistance() implementieren" 
+  },
+  { 
+    "id": "visualization", 
+    "text": "Vector-Layer erstellen und Verbindungslinie zwischen Features zeichnen" 
+  },
+  { 
+    "id": "template", 
+    "text": "template.html erstellen mit Tool-Fenster-Struktur" 
+  },
+  { 
+    "id": "view", 
+    "text": "view.js implementieren mit Events und render-Methode" 
+  },
+  { 
+    "id": "styling", 
+    "text": "style.css schreiben für Tool-Fenster und Linien-Visualisierung" 
+  },
+  { 
+    "id": "reset-button", 
+    "text": "Zurücksetzen-Button implementieren (Auswahl löschen, Karte säubern)" 
+  },
+  { 
+    "id": "cleanup", 
+    "text": "stopTool() vervollständigen - alle Listener und Layer entfernen" 
+  },
+  { 
+    "id": "testing", 
+    "text": "Mindestens 3 Unit-Tests mit Mocha/Chai schreiben" 
+  },
+  { 
+    "id": "eslint", 
+    "text": "npm run lint ausführen und alle Fehler beheben" 
+  },
+  { 
+    "id": "documentation", 
+    "text": "README.md im Tool-Ordner schreiben (Beschreibung, Verwendung)" 
+  },
+  { 
+    "id": "manual-test", 
+    "text": "Alle Features manuell im Browser testen und Bugs fixen" 
+  },
+  { 
+    "id": "demo", 
+    "text": "Screen-Recording erstellen oder Live-Demo vorbereiten" 
+  }
 ]

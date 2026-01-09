@@ -3,6 +3,7 @@ import DashboardView from '../views/DashboardView.vue';
 import ModuleView from '../views/ModuleView.vue';
 import TeamView from '../views/TeamView.vue';
 import AchievementsView from '../views/AchievementsView.vue';
+import FAQView from '../views/FAQView.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/achievements',
       name: 'achievements',
       component: AchievementsView
+    },
+    {
+      path: '/faq',
+      name: 'faq',
+      component: FAQView
     }
   ]
 });
