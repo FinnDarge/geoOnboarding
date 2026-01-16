@@ -4,6 +4,8 @@
 
 Das Masterportal wird vollständig über JSON-Konfigurationsdateien gesteuert. Diese Dateien definieren, welche Layer verfügbar sind, wie das Portal aussieht und welche Tools angeboten werden.
 
+> 💡 **Wichtige Terminologie**: Die offizielle Masterportal-Dokumentation verwendet die Begriffe `portalConfig` und `layerConfig` (CamelCase). In manchen älteren Dokumenten findest du auch `Portalconfig` und `Themenconfig` - beide Schreibweisen beziehen sich auf dieselben Konzepte.
+
 ## Die zwei Arten von Konfigurationsdateien
 
 ### 1. Globale Konfigurationsdateien
@@ -125,15 +127,17 @@ Die **Hauptkonfigurationsdatei** eines Portals. Hier wird alles definiert:
 
 ```json
 {
-  "Portalconfig": {
+  "portalConfig": {
     "portalTitle": {
       "title": "Mein erstes Portal",
       "logo": "logo.png"
     },
-    "mapView": {
-      "center": [565874, 5934140],
-      "epsg": "EPSG:25832",
-      "startZoom": 5
+    "map": {
+      "mapView": {
+        "center": [565874, 5934140],
+        "epsg": "EPSG:25832",
+        "startZoom": 5
+      }
     },
     "menu": {
       "tools": {
@@ -146,16 +150,16 @@ Die **Hauptkonfigurationsdatei** eines Portals. Hier wird alles definiert:
       }
     }
   },
-  "Themenconfig": {
-    "Hintergrundkarten": {
-      "Layer": [
+  "layerConfig": {
+    "baselayer": {
+      "elements": [
         {
           "id": "1234"
         }
       ]
     },
-    "Fachdaten": {
-      "Layer": [
+    "subjectlayer": {
+      "elements": [
         {
           "id": "5678"
         }
@@ -167,14 +171,16 @@ Die **Hauptkonfigurationsdatei** eines Portals. Hier wird alles definiert:
 
 **Wichtige Abschnitte:**
 
-- **Portalconfig:** Portal-Aussehen und Verhalten
+- **portalConfig:** Portal-Aussehen und Verhalten
   - `portalTitle`: Titel und Logo
-  - `mapView`: Karten-Initialisierung
+  - `map.mapView`: Karten-Initialisierung
   - `menu`: Verfügbare Tools und Menüs
 
-- **Themenconfig:** Layer-Organisation
-  - `Hintergrundkarten`: Basiskarten (OSM, Luftbilder, etc.)
-  - `Fachdaten`: Thematische Layer (POIs, WFS-Daten)
+- **layerConfig:** Layer-Organisation
+  - `baselayer`: Hintergrundkarten (OSM, Luftbilder, etc.)
+  - `subjectlayer`: Thematische Layer (POIs, WFS-Daten)
+
+> 💡 **Alternative Terminologie**: In älteren Portalen findest du manchmal `Portalconfig` und `Themenconfig` statt `portalConfig` und `layerConfig`. Die offizielle Dokumentation (Version 3.x) nutzt `portalConfig` und `layerConfig`.
 
 ## Zusammenspiel der Dateien
 

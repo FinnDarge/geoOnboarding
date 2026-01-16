@@ -35,7 +35,7 @@ cd sandbox-maria
 
 ```json
 {
-  "Portalconfig": {
+  "portalConfig": {
     "portalTitle": {
       "title": "Sandbox - Maria",
       "logo": "https://www.masterportal.org/files/masterportal/img/Logo_Masterportal.svg"
@@ -113,16 +113,15 @@ Oftmals gibt es für denselben Datensatz zwei Services:
 
 ### Schritt 2.2: Layer in config.json aktivieren
 
-Öffne `config.json` und füge die Layer unter `Themenconfig` hinzu:
+Öffne `config.json` und füge die Layer unter `layerConfig` hinzu:
 
 ```json
 {
-  "Themenconfig": {
-    "Fachdaten": {
-      "Ordner": {
-        "Gesundheit": {
-          "Layer": [
-            {
+  "layerConfig": {
+    "subjectlayer": {
+      "elements": [
+        {
+          "id": "wms_krankenhaeuser",
               "id": "wms_krankenhaeuser",
               "name": "Krankenhäuser (Rasterbild)",
               "visibility": false,
@@ -221,22 +220,32 @@ Prüfe:
 ### Debugging mit Browser-Tools
 
 **Console-Tab:**
+
+Nutze die Browser Console (F12) um Fehler zu finden:
+
 ```javascript
-// Alle geladenen Layer anzeigen
-Radio.request("ModelList", "getModelsByAttributes", {typ: "WFS"})
-
-// Specific Layer holen
-const layer = Radio.request("ModelList", "getModelByAttributes", {
-  id: "wfs_krankenhaeuser"
-});
-
-console.log(layer);
+// Fehler und Warnungen werden hier angezeigt
+// Prüfe auf:
+// - JSON Syntax-Fehler
+// - 404 Fehler beim Laden von Config-Dateien
+// - WMS/WFS Service-Fehler
 ```
 
 **Network-Tab:**
-- Filter auf "wfs" oder "wms" setzen
-- Siehst du die Requests?
-- Status Code 200 = OK, 404 = Service nicht gefunden, 500 = Server-Fehler
+
+- Filtere auf "wfs" oder "wms" um Service-Requests zu sehen
+- Status Codes prüfen:
+  - `200` = OK
+  - `404` = Service nicht gefunden (URL prüfen)
+  - `500` = Server-Fehler (Service-Problem)
+  - `CORS-Fehler` = Service muss CORS-Header setzen
+
+**Application-Tab:**
+
+- Local Storage/Session Storage prüfen
+- Gespeicherte Portal-Einstellungen ansehen
+
+> 💡 **Tipp**: Mit den Vue DevTools (Browser-Extension) kannst du auch den Vuex Store inspizieren und sehen, welche Layer geladen sind.
 
 ## Schritt 4: Änderungen dokumentieren
 

@@ -67,9 +67,10 @@ Das Masterportal kommt mit vielen fertigen Werkzeugen:
 
 **Addons** erweitern das Masterportal mit eigener Logik:
 
-- Können mit **Vue-Komponenten** entwickelt werden (in neueren Versionen)
-- Integrieren eigene Backend-Services
+- Werden mit **Vue 3 Komponenten** entwickelt
+- Können eigene Backend-Services integrieren
 - Implementieren spezifische Business-Logik
+- Leben im `addons/` Ordner außerhalb des Core
 
 ### 4. Services
 
@@ -99,9 +100,9 @@ Das Masterportal kommt mit vielen fertigen Werkzeugen:
 
 ### Phase 3: Tool-Entwicklung
 
-1. **Analysiere bestehende Tools** im Repository
-2. **Entwickle eigenes Tool** mit Backbone.js & OpenLayers
-3. **Teste** mit Unit-Tests
+1. **Analysiere bestehende Tools** im Repository (`src/modules/tools/`)
+2. **Entwickle eigenes Tool** mit Vue 3, Vuex 4 & OpenLayers
+3. **Teste** mit Unit-Tests (Mocha, Chai, Sinon)
 4. **Code-Review** mit erfahrenen Teammitgliedern
 
 ### Phase 4: Deployment
@@ -116,7 +117,7 @@ Das Masterportal kommt mit vielen fertigen Werkzeugen:
 ### Für dich als Nachwuchskraft:
 
 ✅ **Schneller Einstieg** in professionelle Geo-Entwicklung  
-✅ **Praktische Skills** in OpenLayers, Backbone.js, Webpack  
+✅ **Praktische Skills** in Vue 3, OpenLayers und modernem JavaScript  
 ✅ **Open Source Contribution** - dein Code wird von vielen genutzt  
 ✅ **Community** - aktive Entwickler-Community in Hamburg  
 
@@ -129,12 +130,14 @@ Das Masterportal kommt mit vielen fertigen Werkzeugen:
 
 ## Versionierung
 
-**Wichtig:** Das Masterportal existiert in mehreren Versionen:
+**Wichtig:** Das Masterportal existiert in mehreren Hauptversionen:
 
-- **Version 2.x:** Stabil, weit verbreitet
-- **Version 3.x:** Aktuell, mit moderneren Features (z.B. Vue 3 Support)
+- **Version 2.x:** Basiert auf Backbone.js und Vue 2 (Legacy)
+- **Version 3.x:** Aktuelle Version - vollständig auf Vue 3 + Vuex 4 migriert
 
-Dein Team nutzt **Version 3**. Achte darauf, dass du die richtige Dokumentation verwendest!
+**Dein Team nutzt Version 3.x** - diese verwendet ausschließlich Vue 3 und Vuex 4.
+
+> ⚠️ **Achtung**: Achte bei der Suche nach Beispielen und Dokumentation darauf, dass du **Version 3.x** Material verwendest. Code-Beispiele mit Backbone.js stammen aus Version 2 und sind nicht mehr relevant!
 
 ## Nächste Schritte
 
@@ -149,8 +152,9 @@ In den folgenden Lektionen lernst du:
 ## Weiterführende Ressourcen
 
 - **Offizielle Website:** https://www.masterportal.org
-- **Dokumentation:** https://www.masterportal.org/dokumentation
+- **Dokumentation:** https://www.masterportal.org/dokumentation (Version 3.x)
 - **Repository:** https://bitbucket.org/geowerkstatt-hamburg/masterportal
-- **Community:** Bitbucket Issues & Discussions
+- **Community:** Issues und Discussions im Repository
+- **Beispiel-Portale:** Im Repository unter `portal/` (Basic, Master, etc.)
 
 Lass uns loslegen! 🚀

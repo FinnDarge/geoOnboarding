@@ -21,9 +21,11 @@ cd mein-erstes-portal
 Kopiere die Grundstruktur von einem Beispiel-Portal:
 
 ```bash
-# Von einem bestehenden Portal kopieren
-cp -r ../basic/* .
+# Von einem bestehenden Portal kopieren (Achtung: Großschreibung!)
+cp -r ../Basic/* .
 ```
+
+> 💡 **Windows**: Nutze `xcopy /E /I ..\Basic .` oder kopiere den Ordner im Explorer
 
 Du solltest nun haben:
 ```
@@ -60,7 +62,7 @@ Jetzt kommt der Hauptteil - die `config.json` konfigurieren.
 
 ```json
 {
-  "Portalconfig": {
+  "portalConfig": {
     "portalTitle": {
       "title": "Mein Geo-Portal",
       "logo": "https://example.com/logo.png",
@@ -76,18 +78,15 @@ Jetzt kommt der Hauptteil - die `config.json` konfigurieren.
 Definiere, wo die Karte beim Start zentriert sein soll:
 
 ```json
-"mapView": {
-  "center": [565874, 5934140],
-  "epsg": "EPSG:25832",
-  "startZoom": 5,
-  "extent": [454591, 5809000, 700000, 6075769],
-  "options": [
-    {
-      "resolution": 66.14579761460263,
-      "scale": 250000,
-      "zoomLevel": 0
+"portalConfig": {
+  "map": {
+    "mapView": {
+      "center": [565874, 5934140],
+      "epsg": "EPSG:25832",
+      "startZoom": 5,
+      "extent": [454591, 5809000, 700000, 6075769]
     }
-  ]
+  }
 }
 ```
 
@@ -102,16 +101,25 @@ Definiere, wo die Karte beim Start zentriert sein soll:
 ### Suchfunktion aktivieren
 
 ```json
-"searchBar": {
-  "gazetteer": {
-    "minChars": 3,
-    "serviceId": "bkg_geosearch",
-    "searchStreets": true,
-    "searchHouseNumbers": true,
-    "searchAddress": true
+"portalConfig": {
+  "map": {
+    "mapView": { /* ... */ }
+  },
+  "mainMenu": {
+    "searchBar": {
+      "gazetteer": {
+        "minChars": 3,
+        "serviceId": "bkg_geosearch",
+        "searchStreets": true,
+        "searchHouseNumbers": true,
+        "searchAddress": true
+      }
+    }
   }
 }
 ```
+
+> 💡 Die `serviceId` referenziert einen Eintrag in der `rest-services.json`.
 
 ## Schritt 5: Layer hinzufügen
 
@@ -145,12 +153,12 @@ Layer werden in zwei Schritten eingebunden:
 
 ### 5.2 Layer in config.json aktivieren
 
-Füge die Layer-IDs in der `config.json` unter `Themenconfig` hinzu:
+Füge die Layer-IDs in der `config.json` unter `layerConfig` hinzu:
 
 ```json
-"Themenconfig": {
-  "Hintergrundkarten": {
-    "Layer": [
+"layerConfig": {
+  "baselayer": {
+    "elements": [
       {
         "id": "openstreetmap",
         "name": "OpenStreetMap",
@@ -158,19 +166,15 @@ Füge die Layer-IDs in der `config.json` unter `Themenconfig` hinzu:
       }
     ]
   },
-  "Fachdaten": {
-    "Ordner": {
-      "Bildung": {
-        "Layer": [
-          {
-            "id": "wfs_schulen",
-            "name": "Schulstandorte",
-            "visibility": false,
-            "styleId": "schulen_style"
-          }
-        ]
+  "subjectlayer": {
+    "elements": [
+      {
+        "id": "wfs_schulen",
+        "name": "Schulstandorte",
+        "visibility": false,
+        "styleId": "schulen_style"
       }
-    }
+    ]
   }
 }
 ```
@@ -179,6 +183,8 @@ Füge die Layer-IDs in der `config.json` unter `Themenconfig` hinzu:
 - `id`: Referenz zur services.json
 - `visibility`: Soll der Layer beim Start sichtbar sein?
 - `styleId`: Optionale Referenz zur style.json
+
+> 💡 **Alternative Terminologie**: In älteren Portalen findest du manchmal `Themenconfig` mit `Hintergrundkarten` und `Fachdaten`. Die offizielle v3 Doku nutzt `layerConfig` mit `baselayer` und `subjectlayer`.
 
 ## Schritt 6: Tools aktivieren
 
@@ -350,7 +356,7 @@ Schaue nach fehlgeschlagenen Requests:
 ✅ config.json: Portal-Titel gesetzt  
 ✅ config.json: Kartenansicht konfiguriert  
 ✅ services.json: Layer definiert  
-✅ config.json: Layer in Themenconfig aktiviert  
+✅ config.json: Layer in layerConfig aktiviert  
 ✅ config.json: Tools aktiviert  
 ✅ JSON-Syntax validiert  
 ✅ Portal im Browser getestet  
