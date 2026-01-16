@@ -12,7 +12,9 @@ const navItems = computed(() => [
   ...getModulesForTrack(store.state.tracks.enabled).map((module) => ({
     label: module.title,
     to: { name: 'module', params: { id: module.id } },
-    icon: module.icon
+    icon: module.icon,
+    moduleId: module.id,
+    isCompleted: store.getters['progress/moduleProgress'](module.id) === 100
   })),
   { label: 'Erfolge', to: { name: 'achievements' }, icon: '🏆' },
   { label: 'Team', to: { name: 'team' }, icon: '👥' },
@@ -52,10 +54,14 @@ const isActive = (to) => {
         :key="item.label"
         :to="item.to"
         class="sidebar__link"
-        :class="{ 'sidebar__link--active': isActive(item.to) }"
+        :class="{ 
+          'sidebar__link--active': isActive(item.to),
+          'sidebar__link--completed': item.isCompleted
+        }"
       >
         <span class="sidebar__icon">{{ item.icon || '•' }}</span>
         <span>{{ item.label }}</span>
+        <span v-if="item.isCompleted" class="sidebar__check">✓</span>
       </RouterLink>
     </nav>
   </aside>
@@ -121,6 +127,7 @@ const isActive = (to) => {
   color: var(--color-text);
   text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease;
+  position: relative;
 }
 
 .sidebar__link:hover {
@@ -132,8 +139,20 @@ const isActive = (to) => {
   color: var(--color-accent);
 }
 
+.sidebar__link--completed {
+  border-left: 3px solid var(--color-success, #10b981);
+  padding-left: 11px;
+}
+
 .sidebar__icon {
   width: 24px;
   text-align: center;
+}
+
+.sidebar__check {
+  margin-left: auto;
+  font-weight: bold;
+  color: var(--color-success, #10b981);
+  font-size: 16px;
 }
 </style>
