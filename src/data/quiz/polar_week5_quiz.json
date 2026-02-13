@@ -1,0 +1,55 @@
+{
+  "title": "Woche 5: Release & Produktion - Quiz",
+  "questions": [
+    {
+      "question": "Nach welchem Schema funktioniert Semantic Versioning?",
+      "options": [
+        "YEAR.MONTH.DAY",
+        "MAJOR.MINOR.PATCH",
+        "VERSION.BUILD.REVISION",
+        "Gibt es kein festes Schema"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Wann ist ein MAJOR-Version-Bump erforderlich?",
+      "options": [
+        "Bei jedem Bugfix",
+        "Bei Breaking Changes (API-Änderungen)",
+        "Bei neuen Features",
+        "Jeden Monat"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Was gehört NICHT in einen CHANGELOG?",
+      "options": [
+        "Neue Features (Added)",
+        "Bugfixes (Fixed)",
+        "Interne Code-Refactorings",
+        "Breaking Changes"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Was ist der Unterschied zwischen 'npm publish' und 'npm pack'?",
+      "options": [
+        "Kein Unterschied",
+        "pack erstellt .tgz lokal, publish uploaded zu NPM",
+        "publish ist schneller",
+        "pack ist deprecated"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Was ist der Vorteil von Conventional Commits (z.B. 'feat:', 'fix:')?",
+      "options": [
+        "Bessere Git-Performance",
+        "Automatische CHANGELOG-Generierung und Version-Bumps",
+        "Weniger Merge-Konflikte",
+        "Automatische Code-Reviews"
+      ],
+      "answer": 1
+    }
+  ]
+}

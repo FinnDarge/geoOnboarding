@@ -1,0 +1,55 @@
+{
+  "title": "Woche 2: Plugin-Anatomie - Quiz",
+  "questions": [
+    {
+      "question": "Welche Properties MUSS eine Plugin-Factory mindestens zurückgeben?",
+      "options": [
+        "Nur name",
+        "name, storeModule, component",
+        "name, version, author",
+        "component, template, styles"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Warum sollte man 'namespaced: true' im Store-Module setzen?",
+      "options": [
+        "Bessere Performance",
+        "Verhindert Namenskollisionen zwischen Plugins",
+        "Ermöglicht Hot-Reload",
+        "Ist für TypeScript erforderlich"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Wofür ist das 9Layout-System zuständig?",
+      "options": [
+        "CSS-Grid-Definition",
+        "Positionierung von Plugins in 9 Zonen",
+        "Map-Projektion",
+        "Responsive Breakpoints"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Wie greift ein Plugin auf die OpenLayers-Map zu?",
+      "options": [
+        "window.map",
+        "this.$map",
+        "rootGetters['map/getMap']",
+        "import map from '@polar/core'"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Wann sollte man Actions statt Mutations nutzen?",
+      "options": [
+        "Immer",
+        "Nur für asynchrone Operationen",
+        "Nur für synchrone State-Änderungen",
+        "Nie, Mutations sind ausreichend"
+      ],
+      "answer": 1
+    }
+  ]
+}

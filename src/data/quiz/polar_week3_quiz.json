@@ -1,0 +1,55 @@
+{
+  "title": "Woche 3: Client-Entwicklung - Quiz",
+  "questions": [
+    {
+      "question": "Was ist der Hauptunterschied zwischen Generic und Specialized Clients?",
+      "options": [
+        "Generic nutzt Vue 2, Specialized Vue 3",
+        "Generic hat alle Plugins, Specialized nur benötigte",
+        "Generic ist für Development, Specialized für Testing",
+        "Kein Unterschied"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Wo wird die Map-Konfiguration (View, Layers) definiert?",
+      "options": [
+        "In addPlugins.ts",
+        "In mapConfiguration.ts",
+        "In vite.config.js",
+        "In index.html"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Wie kann ein Plugin auf State eines anderen Plugins reagieren?",
+      "options": [
+        "Direkter Import: import { state } from '@polar/other-plugin'",
+        "Via store.watch() auf Plugin-State",
+        "Via window.addEventListener()",
+        "Ist nicht möglich"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Welche Vorteile hat ein Specialized Client?",
+      "options": [
+        "Schnellere Development-Zeit",
+        "Kleinere Bundle-Size und client-spezifisches Branding",
+        "Automatische Tests",
+        "Bessere TypeScript-Support"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Wofür werden Environment-Variables (import.meta.env) genutzt?",
+      "options": [
+        "Plugin-Registrierung",
+        "API-URLs und Feature-Flags für Dev/Prod",
+        "CSS-Styling",
+        "TypeScript-Konfiguration"
+      ],
+      "answer": 1
+    }
+  ]
+}

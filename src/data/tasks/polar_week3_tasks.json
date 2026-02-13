@@ -1,0 +1,26 @@
+[
+  {
+    "id": "w3-client-setup",
+    "text": "Erstelle packages/clients/dashboard/ mit package.json und vite.config.js"
+  },
+  {
+    "id": "w3-addplugins",
+    "text": "Konfiguriere addPlugins.ts mit Zoom, LayerChooser, Legend (nur diese 3)"
+  },
+  {
+    "id": "w3-mapconfig",
+    "text": "Passe mapConfiguration.ts an: Berlin als Center (13.4, 52.5), Zoom 11"
+  },
+  {
+    "id": "w3-theme",
+    "text": "Erstelle Custom Vuetify-Theme mit Primary-Color #1E3A8A"
+  },
+  {
+    "id": "w3-npm-script",
+    "text": "Füge 'dashboard'-Script zu Root package.json hinzu und teste Start"
+  },
+  {
+    "id": "w3-bonus",
+    "text": "[Bonus] Implementiere Theme-Switcher (Dark/Light) in TopBar"
+  }
+]

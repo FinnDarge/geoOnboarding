@@ -1,0 +1,55 @@
+{
+  "title": "Woche 4: Testing & Qualität - Quiz",
+  "questions": [
+    {
+      "question": "Was ist der Hauptunterschied zwischen Unit- und E2E-Tests?",
+      "options": [
+        "Unit-Tests sind schneller",
+        "Unit-Tests testen isolierte Komponenten, E2E testen vollständige User-Flows",
+        "E2E-Tests sind besser",
+        "Kein Unterschied, nur andere Tools"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Was macht createTestMountParameters()?",
+      "options": [
+        "Erstellt neue Plugins",
+        "Konfiguriert Vue Test Utils mit Vuetify, Store, Mocks",
+        "Startet Playwright-Browser",
+        "Generiert Test-Dateien"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Welches Tool wird für E2E-Tests in POLAR verwendet?",
+      "options": [
+        "Cypress",
+        "Selenium",
+        "Playwright",
+        "Puppeteer"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Was bedeutet eine Coverage von 80% Statements?",
+      "options": [
+        "80% der Funktionen sind getestet",
+        "80% der Code-Zeilen wurden während Tests ausgeführt",
+        "80% der Tests sind bestanden",
+        "80% der Files haben Tests"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Was ist Test-Driven Development (TDD)?",
+      "options": [
+        "Tests nur am Ende schreiben",
+        "Test zuerst schreiben (rot), dann implementieren (grün), dann refactoren",
+        "Automatische Test-Generierung",
+        "Tests nur für Production-Code"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "w1-snowbox",
+    "text": "Starte Snowbox lokal und öffne DevTools (Vue + Vuex Tab)"
+  },
+  {
+    "id": "w1-plugins",
+    "text": "Erstelle eine Liste aller Plugins in packages/plugins/ mit Kategorie"
+  },
+  {
+    "id": "w1-store",
+    "text": "Dokumentiere die Vuex-Store-Struktur (Root-Module und Plugin-Module)"
+  },
+  {
+    "id": "w1-createmap",
+    "text": "Lies packages/core/src/createMap.ts und erkläre den Map-Lifecycle"
+  },
+  {
+    "id": "w1-bonus",
+    "text": "[Bonus] Erstelle ein 'HelloWorld'-Plugin mit Factory, Store und Component"
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "title": "Woche 1: Architektur & Setup - Quiz",
+  "questions": [
+    {
+      "question": "Was ist der Hauptzweck des POLAR-Frameworks?",
+      "options": [
+        "Backend-API für Geodaten",
+        "Plugin-basierte OpenLayers-Anwendungen entwickeln",
+        "Datenbank-Management-System",
+        "CSS-Framework für WebGIS"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Welche Technologien nutzt POLAR im Core?",
+      "options": [
+        "React + Redux + Leaflet",
+        "Vue 3 + Vuex + OpenLayers",
+        "Angular + NgRx + Mapbox",
+        "Svelte + Leaflet"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Was ist die Aufgabe der createMap()-Funktion in packages/core/?",
+      "options": [
+        "HTML-Element erstellen",
+        "OpenLayers-Map initialisieren und Plugin-Lifecycle starten",
+        "Vuex-Store konfigurieren",
+        "Router-Setup"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Wo werden Plugins im POLAR-Monorepo registriert?",
+      "options": [
+        "In packages/core/src/createMap.ts",
+        "In packages/clients/<client>/src/addPlugins.ts",
+        "In nx.json",
+        "In jest.config.ts"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Was ist der Vorteil des Factory Patterns bei Plugins?",
+      "options": [
+        "Plugins sind schneller",
+        "Plugins können zur Laufzeit konfiguriert werden",
+        "Plugins brauchen weniger Code",
+        "Plugins sind automatisch getestet"
+      ],
+      "answer": 1
+    }
+  ]
+}

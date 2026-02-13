@@ -1,0 +1,26 @@
+[
+  {
+    "id": "w4-store-tests",
+    "text": "Schreibe Unit-Tests für Counter-Store (mindestens 8 Tests für Mutations/Actions/Getters)"
+  },
+  {
+    "id": "w4-component-tests",
+    "text": "Teste CounterComponent mit @vue/test-utils und createTestMountParameters (5 Tests)"
+  },
+  {
+    "id": "w4-coverage",
+    "text": "Erreiche ≥80% Code-Coverage für Counter-Plugin (npm run test:coverage)"
+  },
+  {
+    "id": "w4-e2e",
+    "text": "Erstelle e2e/counter.spec.ts mit Playwright (Test: Increment → Decrement → Reset)"
+  },
+  {
+    "id": "w4-tdd",
+    "text": "Implementiere 'IncrementByTen'-Feature test-first (TDD-Workflow)"
+  },
+  {
+    "id": "w4-bonus",
+    "text": "[Bonus] Integriere Visual Regression Tests mit Playwright-Screenshots"
+  }
+]

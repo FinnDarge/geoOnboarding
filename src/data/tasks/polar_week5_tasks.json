@@ -1,0 +1,26 @@
+[
+  {
+    "id": "w5-changelog",
+    "text": "Erstelle CHANGELOG.md für Counter-Plugin (v1.0.0 mit Added/Fixed/Changed)"
+  },
+  {
+    "id": "w5-readme",
+    "text": "Schreibe README.md mit Installation, Usage, API-Dokumentation"
+  },
+  {
+    "id": "w5-package-json",
+    "text": "Konfiguriere package.json: Version 1.0.0, publishConfig, main/types fields"
+  },
+  {
+    "id": "w5-build",
+    "text": "Build Counter-Plugin und teste Dry-Run: npm publish --dry-run"
+  },
+  {
+    "id": "w5-git-tag",
+    "text": "Erstelle Git-Commit + Tag für Release: git tag counter-v1.0.0"
+  },
+  {
+    "id": "w5-bonus",
+    "text": "[Bonus] Richte GitHub Actions Workflow für automatisches NPM-Publishing ein"
+  }
+]

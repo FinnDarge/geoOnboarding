@@ -1,0 +1,34 @@
+[
+  {
+    "id": "capstone-m1",
+    "text": "Milestone 1: Erstelle Projekt-Boilerplate (Ordner, package.json, types.ts, leerer Store)"
+  },
+  {
+    "id": "capstone-m2",
+    "text": "Milestone 2: Implementiere Vuex-Store (State, Getters, Actions, Mutations)"
+  },
+  {
+    "id": "capstone-m3",
+    "text": "Milestone 3: Baue Vue-Component mit Vuetify (Buttons, Messung-Anzeige)"
+  },
+  {
+    "id": "capstone-m4",
+    "text": "Milestone 4: Integriere OpenLayers (Draw-Interaction, Berechnungen)"
+  },
+  {
+    "id": "capstone-m5",
+    "text": "Milestone 5: Registriere Plugin in Snowbox (addPlugins.ts, 9Layout)"
+  },
+  {
+    "id": "capstone-m6",
+    "text": "Milestone 6: Schreibe Unit-Tests (≥80% Coverage, Store + Component)"
+  },
+  {
+    "id": "capstone-m7",
+    "text": "Milestone 7: Erstelle E2E-Test mit Playwright (Distanz + Fläche messen)"
+  },
+  {
+    "id": "capstone-m8",
+    "text": "Milestone 8: Finalisiere README, CHANGELOG und npm publish --dry-run"
+  }
+]

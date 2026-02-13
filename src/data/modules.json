@@ -214,27 +214,183 @@
     },
     {
       "id": "polar",
-      "title": "POLAR Track",
-      "description": "Arbeite mit dem POLAR Framework (Plugins for OpenLAyeRs) von Dataport.",
+      "title": "POLAR-Track",
+      "description": "Spezialisiere dich auf POLAR – Plugin-basierte OpenLayers-Anwendungen mit Vue 3 und Vuetify.",
       "modules": [
         {
-          "id": "polar-mapping",
-          "title": "POLAR Framework Basics",
-          "description": "Lerne die Plugin-basierte Kartenarchitektur von POLAR kennen.",
-          "icon": "🗺️",
+          "id": "polar-quickstart",
+          "title": "POLAR in 15 Minuten",
+          "description": "Schnelleinstieg: Was ist POLAR, Repo-Struktur und erste Schritte.",
+          "icon": "⚡",
           "track": "polar",
           "lessons": [
             {
-              "id": "polar-overview",
-              "title": "POLAR Framework Einführung",
+              "id": "quick-start",
+              "title": "POLAR Quick Start Guide",
               "type": "markdown",
-              "content": "polar/overview.md"
+              "content": "polar/quick_start.md"
             },
             {
               "id": "polar-docs",
-              "title": "POLAR Dokumentation",
+              "title": "POLAR Offizielle Dokumentation",
               "type": "external-link",
-              "url": "https://dataport.github.io/polar/"
+              "url": "https://github.com/Dataport/polar"
+            }
+          ]
+        },
+        {
+          "id": "polar-week1",
+          "title": "Woche 1: Architektur & Setup",
+          "description": "Monorepo verstehen, Snowbox starten, Plugin-Lifecycle kennenlernen.",
+          "icon": "🏗️",
+          "track": "polar",
+          "lessons": [
+            {
+              "id": "w1-architecture",
+              "title": "POLAR-Architektur verstehen",
+              "type": "markdown",
+              "content": "polar/week1_architecture.md"
+            },
+            {
+              "id": "w1-tasks",
+              "title": "Hands-on: Snowbox & Store erkunden",
+              "type": "task-list",
+              "tasksId": "polar_week1_tasks"
+            },
+            {
+              "id": "w1-quiz",
+              "title": "Knowledge Check Woche 1",
+              "type": "quiz",
+              "quizId": "polar_week1_quiz"
+            }
+          ]
+        },
+        {
+          "id": "polar-week2",
+          "title": "Woche 2: Plugin-Anatomie",
+          "description": "Store-Module, Vue-Components mit Vuetify, 9Layout-System.",
+          "icon": "🧩",
+          "track": "polar",
+          "lessons": [
+            {
+              "id": "w2-plugin-anatomy",
+              "title": "Plugin-Struktur im Detail",
+              "type": "markdown",
+              "content": "polar/week2_plugin_anatomy.md"
+            },
+            {
+              "id": "w2-tasks",
+              "title": "Hands-on: Counter-Plugin erstellen",
+              "type": "task-list",
+              "tasksId": "polar_week2_tasks"
+            },
+            {
+              "id": "w2-quiz",
+              "title": "Knowledge Check Woche 2",
+              "type": "quiz",
+              "quizId": "polar_week2_quiz"
+            }
+          ]
+        },
+        {
+          "id": "polar-week3",
+          "title": "Woche 3: Client-Entwicklung",
+          "description": "Generic vs. Specialized Clients, addPlugins.ts, Map-Konfiguration.",
+          "icon": "🖥️",
+          "track": "polar",
+          "lessons": [
+            {
+              "id": "w3-client-dev",
+              "title": "Client-Entwicklung verstehen",
+              "type": "markdown",
+              "content": "polar/week3_client_development.md"
+            },
+            {
+              "id": "w3-tasks",
+              "title": "Hands-on: Dashboard-Client aufsetzen",
+              "type": "task-list",
+              "tasksId": "polar_week3_tasks"
+            },
+            {
+              "id": "w3-quiz",
+              "title": "Knowledge Check Woche 3",
+              "type": "quiz",
+              "quizId": "polar_week3_quiz"
+            }
+          ]
+        },
+        {
+          "id": "polar-week4",
+          "title": "Woche 4: Testing & Qualität",
+          "description": "Jest + Playwright, createTestMountParameters, Code-Coverage.",
+          "icon": "🧪",
+          "track": "polar",
+          "lessons": [
+            {
+              "id": "w4-testing",
+              "title": "Testing-Strategien für POLAR",
+              "type": "markdown",
+              "content": "polar/week4_testing.md"
+            },
+            {
+              "id": "w4-tasks",
+              "title": "Hands-on: Tests für Counter-Plugin",
+              "type": "task-list",
+              "tasksId": "polar_week4_tasks"
+            },
+            {
+              "id": "w4-quiz",
+              "title": "Knowledge Check Woche 4",
+              "type": "quiz",
+              "quizId": "polar_week4_quiz"
+            }
+          ]
+        },
+        {
+          "id": "polar-week5",
+          "title": "Woche 5: Release & Produktion",
+          "description": "Semantic Versioning, CHANGELOG, NPM-Publishing, CI/CD.",
+          "icon": "🚀",
+          "track": "polar",
+          "lessons": [
+            {
+              "id": "w5-release",
+              "title": "Release-Prozesse verstehen",
+              "type": "markdown",
+              "content": "polar/week5_release.md"
+            },
+            {
+              "id": "w5-tasks",
+              "title": "Hands-on: Counter-Plugin releasen",
+              "type": "task-list",
+              "tasksId": "polar_week5_tasks"
+            },
+            {
+              "id": "w5-quiz",
+              "title": "Knowledge Check Woche 5",
+              "type": "quiz",
+              "quizId": "polar_week5_quiz"
+            }
+          ]
+        },
+        {
+          "id": "polar-capstone",
+          "title": "Capstone: MeasureTool-Plugin",
+          "description": "Realistisches Projekt: Distanz- und Flächenmessung auf der Karte.",
+          "icon": "📏",
+          "track": "polar",
+          "lessons": [
+            {
+              "id": "capstone-brief",
+              "title": "Capstone-Projektbeschreibung",
+              "type": "markdown",
+              "content": "polar/capstone_brief.md"
+            },
+            {
+              "id": "capstone-tasks",
+              "title": "Capstone Meilensteine",
+              "type": "task-list",
+              "tasksId": "polar_capstone_tasks"
             }
           ]
         }

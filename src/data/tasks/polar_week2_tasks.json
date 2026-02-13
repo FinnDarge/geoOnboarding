@@ -1,0 +1,26 @@
+[
+  {
+    "id": "w2-counter-factory",
+    "text": "Erstelle Factory-Funktion für Counter-Plugin mit Options-Interface"
+  },
+  {
+    "id": "w2-counter-store",
+    "text": "Implementiere Store-Module: State (count), Actions (increment/decrement), Getters"
+  },
+  {
+    "id": "w2-counter-component",
+    "text": "Baue Vue-Component mit Vuetify (v-btn, v-card) und Store-Anbindung"
+  },
+  {
+    "id": "w2-nine-layout",
+    "text": "Integriere Counter-Plugin in 9Layout (Position: top-left)"
+  },
+  {
+    "id": "w2-snowbox-test",
+    "text": "Registriere Plugin in addPlugins.ts und teste in Snowbox"
+  },
+  {
+    "id": "w2-bonus",
+    "text": "[Bonus] Erweitere Counter mit Reset-Button und LocalStorage-Persistenz"
+  }
+]

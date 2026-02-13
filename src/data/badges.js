@@ -62,6 +62,69 @@ export const badgeDefinitions = {
     type: 'module',
     track: 'polar'
   },
+  'polar-quickstart': {
+    id: 'polar-quickstart',
+    name: 'POLAR Quick Starter',
+    description: 'POLAR in 15 Minuten gemeistert',
+    image: '/src/data/img/badges/polarQuickstart.png',
+    moduleId: 'polar-quickstart',
+    type: 'module',
+    track: 'polar'
+  },
+  'polar-week1': {
+    id: 'polar-week1',
+    name: 'POLAR Architekt',
+    description: 'Woche 1: Architektur & Setup abgeschlossen',
+    image: '/src/data/img/badges/polarWeek1.png',
+    moduleId: 'polar-week1',
+    type: 'module',
+    track: 'polar'
+  },
+  'polar-week2': {
+    id: 'polar-week2',
+    name: 'Plugin-Entwickler',
+    description: 'Woche 2: Plugin-Anatomie gemeistert',
+    image: '/src/data/img/badges/polarWeek2.png',
+    moduleId: 'polar-week2',
+    type: 'module',
+    track: 'polar'
+  },
+  'polar-week3': {
+    id: 'polar-week3',
+    name: 'Client-Spezialist',
+    description: 'Woche 3: Client-Entwicklung abgeschlossen',
+    image: '/src/data/img/badges/polarWeek3.png',
+    moduleId: 'polar-week3',
+    type: 'module',
+    track: 'polar'
+  },
+  'polar-week4': {
+    id: 'polar-week4',
+    name: 'Testing-Profi',
+    description: 'Woche 4: Testing & Qualität gemeistert',
+    image: '/src/data/img/badges/polarWeek4.png',
+    moduleId: 'polar-week4',
+    type: 'module',
+    track: 'polar'
+  },
+  'polar-week5': {
+    id: 'polar-week5',
+    name: 'Release-Manager',
+    description: 'Woche 5: Release & Produktion abgeschlossen',
+    image: '/src/data/img/badges/polarWeek5.png',
+    moduleId: 'polar-week5',
+    type: 'module',
+    track: 'polar'
+  },
+  'polar-capstone': {
+    id: 'polar-capstone',
+    name: 'MeasureTool-Champion',
+    description: 'Capstone-Projekt: MeasureTool-Plugin erfolgreich entwickelt',
+    image: '/src/data/img/badges/polarCapstone.png',
+    moduleId: 'polar-capstone',
+    type: 'module',
+    track: 'polar'
+  },
   'masterportal-track': {
     id: 'masterportal-track',
     name: 'Masterportal-Meister',
@@ -74,11 +137,11 @@ export const badgeDefinitions = {
   'polar-track': {
     id: 'polar-track',
     name: 'POLAR-Meister',
-    description: 'Gesamten POLAR-Track abgeschlossen',
+    description: 'Gesamten POLAR-Track abgeschlossen (5 Wochen + Capstone)',
     image: '/src/data/img/badges/polarTrackCompletion.png',
     type: 'track',
     track: 'polar',
-    requiredModules: ['js-fundamentals', 'vue-basics', 'geo-basics', 'polar-mapping']
+    requiredModules: ['js-fundamentals', 'vue-basics', 'geo-basics', 'polar-quickstart', 'polar-week1', 'polar-week2', 'polar-week3', 'polar-week4', 'polar-week5', 'polar-capstone']
   }
 };
 
