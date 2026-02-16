@@ -1,4 +1,4 @@
-image: docker-remote.artifactory.dataport.de/node:18
+image: node.repo-in.zcdi.dataport.de/node:18
 
 pages:
   stage: deploy
