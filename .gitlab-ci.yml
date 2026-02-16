@@ -1,10 +1,13 @@
-image: node.repo-in.zcdi.dataport.de/node:18
-
 pages:
   stage: deploy
+  tags:
+    - shell
   script:
+    - node --version
+    - npm --version
     - npm ci
     - npm run build
+    - rm -rf public
     - mv dist public
   artifacts:
     paths:
