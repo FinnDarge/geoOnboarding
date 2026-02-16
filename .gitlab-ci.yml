@@ -1,12 +1,7 @@
 pages:
   stage: deploy
   script:
-    - node --version
-    - npm --version
-    - npm ci
-    - npm run build
-    - rm -rf public
-    - mv dist public
+    - cp -r dist public
   artifacts:
     paths:
       - public
