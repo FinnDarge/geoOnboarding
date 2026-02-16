@@ -1,7 +1,5 @@
 pages:
   stage: deploy
-  tags:
-    - shell
   script:
     - node --version
     - npm --version
