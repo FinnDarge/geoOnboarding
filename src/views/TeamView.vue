@@ -6,7 +6,7 @@ const teamMembers = [
   { name: 'Carina Brühl', role: 'Entwicklerin', initials: 'CB', email: 'carina.bruehl@dataport.de' },
   { name: 'Finn-Rasmus Darge', role: 'Entwickler', initials: 'FD', image: '/src/data/img/darge.png', email: 'finn-rasmus.darge@dataport.de' },
   { name: 'Leonard Dietrich', role: 'Softwaretester', initials: 'LD', email: 'leonard.dietrich@dataport.de' },
-  { name: 'Konstantin Holm', role: 'Entwickler', initials: 'KH', email: 'konstantin.holm@dataport.de' },
+  { name: 'Konstantin Holm', role: 'Entwickler', initials: 'KH', image: '/src/data/img/holm.png', email: 'konstantin.holm@dataport.de' },
   { name: 'Melanie Michaela Klamp', role: 'Entwicklerin', initials: 'MK', email: 'melaniemichaela.klamp@dataport.de' },
   { name: 'Martina Niese', role: 'Entwicklerin', initials: 'MN', email: 'martina.niese@dataport.de' },
   { name: 'Hendrik Oenings', role: 'Entwickler', initials: 'HO', email: 'hendrik.oenings@dataport.de' },
