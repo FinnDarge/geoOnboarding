@@ -1,4 +1,4 @@
-image: node:18
+image: docker.artifactory.dataport.de/node:18
 
 pages:
   stage: deploy
